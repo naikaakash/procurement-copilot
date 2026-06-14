@@ -134,6 +134,9 @@ cd src/SapAssistant.Web && npm run build
 
 # Playwright E2E (builds SPA, copies to wwwroot, spins up dotnet on :5050):
 cd tests/e2e && npm run prepare:all && npm test
+
+# Repro production OIDC sign-in locally (verbose auth logs):
+pwsh ./scripts/run-local-real-auth.ps1
 ```
 
 ---

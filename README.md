@@ -85,6 +85,24 @@ dotnet test                                      # run unit + integration tests
 (cd src/SapAssistant.Web && npm run lint)        # ESLint
 ```
 
+### Debugging real Microsoft sign-in locally
+
+`scripts/run-local-real-auth.ps1` runs the API on `http://localhost:5000`
+with the **real Entra OIDC flow** (reads ClientId/Secret/TenantId from Key
+Vault via your `az login`), serving the SPA from `wwwroot/` — same
+single-origin setup as production. Use this to debug sign-in issues without
+deploying.
+
+```pwsh
+pwsh ./scripts/run-local-real-auth.ps1            # http://localhost:5000 (default)
+pwsh ./scripts/run-local-real-auth.ps1 -Https     # https://localhost:5001 (needs `dotnet dev-certs https --trust`)
+pwsh ./scripts/run-local-real-auth.ps1 -SkipBuild # reuse last SPA build
+```
+
+The console prints verbose `Microsoft.AspNetCore.Authentication` and
+`Microsoft.Identity.Web` logs so you can see exactly which step fails
+(correlation cookie missing, nonce mismatch, etc.).
+
 ---
 
 ## Production deployment
