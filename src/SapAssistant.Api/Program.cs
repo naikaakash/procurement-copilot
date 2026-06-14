@@ -26,6 +26,11 @@ else
     app.UseHttpsRedirection();
 }
 
+// In a deployed image, the React SPA lives in wwwroot/ alongside the API.
+// Locally (Aspire) wwwroot is empty and Vite serves the SPA, so this is a no-op.
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -36,6 +41,13 @@ api.MapGet("/hello", () => new { message = "Hello from SapAssistant.Api", utc = 
 app.MapAccountEndpoints(builder.Configuration);
 app.MapContestEndpoints();
 app.MapChatEndpoints();
+
+// SPA fallback: any non-API GET that doesn't match a file falls through to index.html
+// so React Router handles deep links like /contest, /chat, etc.
+if (!app.Environment.IsDevelopment())
+{
+    app.MapFallbackToFile("index.html");
+}
 
 app.Run();
 

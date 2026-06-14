@@ -62,9 +62,10 @@ sap-assistant/
 │   └── SapAssistant.ServiceDefaults/ # Shared OTel / health / resilience
 ├── tests/
 │   └── SapAssistant.Api.Tests/       # xUnit + WebApplicationFactory
-├── infra/                            # Bicep (added later)
+├── infra/                            # Bicep — production Azure footprint
+├── Dockerfile                        # Multi-stage build (Node + .NET SDK -> ASP.NET runtime)
+├── .github/workflows/                # build-test, infra, deploy
 ├── docs/                             # Architecture + onboarding (added later)
-├── .github/                          # CI/CD + Copilot instructions (added later)
 └── SapAssistant.sln
 ```
 
@@ -81,7 +82,23 @@ dotnet test                                      # run unit + integration tests
 
 ---
 
-## Roadmap
+## Production deployment
+
+Live URL: **https://sapassistant-app.victoriousplant-c4f6558d.eastus2.azurecontainerapps.io**
+
+Azure resources are described declaratively in [`infra/main.bicep`](./infra/main.bicep). CI/CD lives in [`.github/workflows/`](./.github/workflows/):
+
+| Workflow | Trigger | What it does |
+|---|---|---|
+| `build-test.yml` | PR + push | restore/build/test .NET + build the SPA |
+| `infra.yml`      | push touching `infra/**` | `az deployment group create` |
+| `deploy.yml`     | push touching `src/**` or `Dockerfile` | docker build → push to GHCR → `az containerapp update --image` |
+
+### CI/CD already wired
+
+The Bicep is already deployed and the GitHub Actions OIDC federation is set up: pushing to `main` automatically builds the image, pushes it to GHCR, and rolls a new Container App revision. No secrets to copy by hand.
+
+### Roadmap
 
 This MVP is the foundation; subsequent phases add real OAuth, Excel-in-Blob persistence, containerization, deployment to Azure Container Apps, SAP NCo integration, and a real chatbot (Semantic Kernel + Azure OpenAI).
 

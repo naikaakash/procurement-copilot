@@ -1,0 +1,47 @@
+name: build-test
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dotnet:
+    name: .NET build + test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '9.0.x'
+      - name: Restore
+        run: dotnet restore SapAssistant.sln
+      - name: Build
+        run: dotnet build SapAssistant.sln --no-restore --configuration Release
+      - name: Test
+        run: dotnet test SapAssistant.sln --no-build --configuration Release --logger "console;verbosity=normal"
+
+  web:
+    name: Web build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/SapAssistant.Web
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: src/SapAssistant.Web/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
