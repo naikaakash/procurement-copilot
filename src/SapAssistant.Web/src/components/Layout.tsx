@@ -1,6 +1,6 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { startSignOut } from "@/lib/api";
-import { useAuth } from "@/lib/auth";
+import { useAuth } from "@/lib/useAuth";
 import { ChatWidget } from "./ChatWidget";
 
 export function Layout() {

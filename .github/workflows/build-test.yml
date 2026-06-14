@@ -44,6 +44,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: src/SapAssistant.Web/package-lock.json
       - run: npm ci --no-audit --no-fund
+      - run: npm run lint
       - run: npm run build
 
   e2e:

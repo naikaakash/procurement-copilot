@@ -16,26 +16,31 @@ public static class AccountEndpoints
         {
             var logger = loggerFactory.CreateLogger("SapAuth.Signin");
             var safeReturnUrl = SafeReturnUrl(returnUrl, frontendBaseUrl);
+            var alreadyAuthenticated = http.User.Identity?.IsAuthenticated == true;
 
-            var incomingCookies = string.Join(",", http.Request.Cookies.Keys);
-            logger.LogInformation(
-                "/signin entered. IsAuthenticated={Auth} ReturnUrl={Ret} IncomingCookies=[{Cookies}]",
-                http.User.Identity?.IsAuthenticated == true,
-                safeReturnUrl,
-                incomingCookies);
+            // Cookie NAMES (not values) at Debug so we can flip a verbosity dial
+            // when something is going wrong without spamming prod logs.
+            if (logger.IsEnabled(LogLevel.Debug))
+            {
+                logger.LogDebug(
+                    "/signin: IsAuthenticated={Auth} IncomingCookies=[{Cookies}] ReturnUrl={Ret}",
+                    alreadyAuthenticated,
+                    string.Join(",", http.Request.Cookies.Keys),
+                    safeReturnUrl);
+            }
 
             // If the user already has a valid session, do NOT issue a fresh OIDC
             // challenge. Every challenge sets a new Correlation+Nonce cookie pair;
             // repeated re-entry piles up stale cookies and can push a domain past
             // its browser cookie quota, silently dropping the cookies the new
             // flow needs. Just send the user to their destination.
-            if (http.User.Identity?.IsAuthenticated == true)
+            if (alreadyAuthenticated)
             {
-                logger.LogInformation("/signin short-circuit: already authenticated, redirecting to {Ret}", safeReturnUrl);
+                logger.LogInformation("/signin: already authenticated; redirecting to {Ret}", safeReturnUrl);
                 return Results.Redirect(safeReturnUrl);
             }
 
-            logger.LogInformation("/signin issuing OIDC challenge with RedirectUri={Ret}", safeReturnUrl);
+            logger.LogInformation("/signin: issuing OIDC challenge with RedirectUri={Ret}", safeReturnUrl);
             return Results.Challenge(
                 new AuthenticationProperties { RedirectUri = safeReturnUrl },
                 [OpenIdConnectDefaults.AuthenticationScheme]);
@@ -78,11 +83,8 @@ public static class AccountEndpoints
         return app;
     }
 
-    private static string SafeReturnUrl(string? candidate, string frontendBaseUrl)
-        => SafeReturnUrlInternal(candidate, frontendBaseUrl);
-
     // Visible to tests; do not call from production code outside MapAccountEndpoints.
-    internal static string SafeReturnUrlInternal(string? candidate, string frontendBaseUrl)
+    internal static string SafeReturnUrl(string? candidate, string frontendBaseUrl)
     {
         if (string.IsNullOrWhiteSpace(candidate))
         {

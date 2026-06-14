@@ -18,7 +18,7 @@ public class SafeReturnUrlTests
     public void Relative_paths_resolve_against_frontend_base_without_file_scheme(
         string candidate, string frontendBaseUrl, string expected)
     {
-        var actual = AccountEndpoints.SafeReturnUrlInternal(candidate, frontendBaseUrl);
+        var actual = AccountEndpoints.SafeReturnUrl(candidate, frontendBaseUrl);
         Assert.Equal(expected, actual);
         Assert.DoesNotContain("file:", actual, StringComparison.OrdinalIgnoreCase);
     }
@@ -29,9 +29,9 @@ public class SafeReturnUrlTests
     [InlineData("   ")]
     public void Empty_candidate_returns_frontend_base(string? candidate)
     {
-        Assert.Equal("/", AccountEndpoints.SafeReturnUrlInternal(candidate, "/"));
+        Assert.Equal("/", AccountEndpoints.SafeReturnUrl(candidate, "/"));
         Assert.Equal("https://app.example.com",
-            AccountEndpoints.SafeReturnUrlInternal(candidate, "https://app.example.com"));
+            AccountEndpoints.SafeReturnUrl(candidate, "https://app.example.com"));
     }
 
     // Same-origin absolute URLs are allowed; cross-origin and dangerous schemes
@@ -46,7 +46,7 @@ public class SafeReturnUrlTests
     public void Dangerous_candidates_fall_back_to_frontend_base(
         string candidate, string frontendBaseUrl, string expected)
     {
-        var actual = AccountEndpoints.SafeReturnUrlInternal(candidate, frontendBaseUrl);
+        var actual = AccountEndpoints.SafeReturnUrl(candidate, frontendBaseUrl);
         Assert.Equal(expected, actual);
     }
 }
