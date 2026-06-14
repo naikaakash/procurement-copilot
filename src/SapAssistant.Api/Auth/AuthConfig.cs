@@ -64,6 +64,12 @@ public static class AuthConfig
                 o.UsePkce = true;
                 o.SaveTokens = true;
 
+                // With auth code + query response mode the callback is a top-level GET,
+                // so SameSite=Lax is sufficient and avoids Edge/Safari tracking prevention
+                // dropping SameSite=None cookies in some configurations.
+                o.CorrelationCookie.SameSite = SameSiteMode.Lax;
+                o.NonceCookie.SameSite = SameSiteMode.Lax;
+
                 // Defense in depth: never let a remote auth failure produce an opaque 500
                 // (Edge renders that as ERR_UNSAFE_REDIRECT). Redirect to / with a query
                 // string the SPA can read and surface to the user.
