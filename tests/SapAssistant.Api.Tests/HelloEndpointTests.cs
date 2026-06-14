@@ -1,10 +1,9 @@
 using System.Net;
 using System.Net.Http.Json;
-using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace SapAssistant.Api.Tests;
 
-public class HelloEndpointTests(WebApplicationFactory<Program> factory) : IClassFixture<WebApplicationFactory<Program>>
+public class HelloEndpointTests(SapAssistantFactory factory) : IClassFixture<SapAssistantFactory>
 {
     private readonly HttpClient _client = factory.CreateClient();
 
