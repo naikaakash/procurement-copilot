@@ -1,0 +1,80 @@
+name: "Copilot Setup Steps"
+
+# This workflow preinstalls everything the GitHub Copilot cloud agent needs
+# BEFORE it starts working on an issue/PR. Without this, the agent would
+# discover dependencies by trial and error, which is slow and unreliable.
+#
+# The agent picks up this file automatically once it's on the default branch.
+# It's named exactly `copilot-setup-steps.yml`, lives in .github/workflows/,
+# and contains exactly one job called `copilot-setup-steps`.
+
+on:
+  # Auto-validate the setup steps whenever they change.
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  # MUST be named `copilot-setup-steps` or the agent will not pick it up.
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      # actions/checkout needs this.
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up .NET 9
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Restore .NET dependencies
+        run: dotnet restore SapAssistant.sln
+
+      - name: Build .NET (Release, no restore)
+        # Warm the build cache so the agent's first dotnet build is fast.
+        run: dotnet build SapAssistant.sln --no-restore --configuration Release
+
+      - name: Install SPA dependencies
+        working-directory: src/SapAssistant.Web
+        run: npm ci --no-audit --no-fund
+
+      - name: Build SPA
+        # Warm the Vite cache + verify SPA still compiles.
+        working-directory: src/SapAssistant.Web
+        run: npm run build
+
+      - name: Install Playwright E2E dependencies
+        working-directory: tests/e2e
+        run: npm ci --no-audit --no-fund
+
+      - name: Install Playwright browsers (Chromium + system deps)
+        working-directory: tests/e2e
+        run: npx playwright install --with-deps chromium
+
+      - name: Print agent-ready summary
+        run: |
+          echo "::group::Toolchain"
+          dotnet --info | head -n 20
+          node --version
+          npm --version
+          npx playwright --version
+          echo "::endgroup::"
+          echo ""
+          echo "Agent environment is ready."
+          echo "Conventions: .github/copilot-instructions.md"
+          echo "Prompt files: .github/prompts/"

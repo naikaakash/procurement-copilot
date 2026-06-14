@@ -1,0 +1,24 @@
+{
+  "$schema": "https://aka.ms/vscode-mcp-schema",
+  "servers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${input:github_token}"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    }
+  },
+  "inputs": [
+    {
+      "id": "github_token",
+      "type": "promptString",
+      "description": "GitHub token with repo + read:org scope (used by the GitHub MCP server)",
+      "password": true
+    }
+  ]
+}

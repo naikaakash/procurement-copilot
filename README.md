@@ -2,6 +2,11 @@
 
 A SAP integration playground that doubles as a **customer-demoable web app**.
 
+[![build-test](https://github.com/naikaakash/sap-assistant/actions/workflows/build-test.yml/badge.svg)](https://github.com/naikaakash/sap-assistant/actions/workflows/build-test.yml)
+[![infra](https://github.com/naikaakash/sap-assistant/actions/workflows/infra.yml/badge.svg)](https://github.com/naikaakash/sap-assistant/actions/workflows/infra.yml)
+[![deploy](https://github.com/naikaakash/sap-assistant/actions/workflows/deploy.yml/badge.svg)](https://github.com/naikaakash/sap-assistant/actions/workflows/deploy.yml)
+[![copilot-setup-steps](https://github.com/naikaakash/sap-assistant/actions/workflows/copilot-setup-steps.yml/badge.svg)](https://github.com/naikaakash/sap-assistant/actions/workflows/copilot-setup-steps.yml)
+
 > Status: **MVP scaffold** — backend `.NET 9` + frontend `React 19 + Vite + Tailwind v4`, orchestrated locally by [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/), hosted on Azure Container Apps.
 
 ---
@@ -103,6 +108,40 @@ The Bicep is already deployed and the GitHub Actions OIDC federation is set up: 
 This MVP is the foundation; subsequent phases add real OAuth, Excel-in-Blob persistence, containerization, deployment to Azure Container Apps, SAP NCo integration, and a real chatbot (Semantic Kernel + Azure OpenAI).
 
 See `docs/` (after Phase 8) for full architecture and onboarding.
+
+---
+
+## AI-ready repo
+
+This repo is set up so AI coding agents (GitHub Copilot, Copilot CLI, Cursor, Codex)
+can land clean PRs without tribal knowledge.
+
+| File / dir | Who reads it | What it does |
+|---|---|---|
+| [`.github/copilot-instructions.md`](./.github/copilot-instructions.md) | All Copilot surfaces (chat, CLI, cloud agent) | Architecture invariants + coding conventions + commands |
+| [`AGENTS.md`](./AGENTS.md) | Codex, Claude Code, generic `AGENTS.md`-aware tooling | Points at `copilot-instructions.md` |
+| [`.github/workflows/copilot-setup-steps.yml`](./.github/workflows/copilot-setup-steps.yml) | GitHub Copilot **cloud coding agent** | Preinstalls .NET 9, Node 24, npm packages, Playwright browsers before the agent starts work |
+| [`.github/prompts/`](./.github/prompts/) | Copilot Chat slash-commands | Reusable templates: `add-endpoint`, `add-page`, `add-bicep-resource` |
+| [`.github/ISSUE_TEMPLATE/copilot-task.md`](./.github/ISSUE_TEMPLATE/copilot-task.md) | Humans filing work for the cloud agent | Forces well-scoped issues so the agent can succeed |
+| [`.github/pull_request_template.md`](./.github/pull_request_template.md) | Anything that opens a PR | Standard checklist + blast-radius flag |
+| [`.devcontainer/devcontainer.json`](./.devcontainer/devcontainer.json) | Codespaces + VS Code Dev Containers | One-click dev env with .NET 9, Node 24, Docker, az, gh, pwsh + all deps |
+| [`.vscode/mcp.json`](./.vscode/mcp.json) | VS Code MCP-aware agents | Pre-wires GitHub + Playwright MCP servers |
+| [`.vscode/extensions.json`](./.vscode/extensions.json) | VS Code | Recommends C# / Bicep / Tailwind / Playwright / Copilot extensions |
+
+### Filing work for the GitHub Copilot cloud agent
+
+1. Open a new issue and pick the **🤖 Copilot agent task** template.
+2. Fill in the **Goal**, **In scope**, **Out of scope**, and **Acceptance criteria** sections.
+3. Assign the issue to `@copilot` (or use the **Code with Copilot** button in the GitHub UI).
+4. The cloud agent will:
+   - Run `copilot-setup-steps.yml` to bring up its environment
+   - Read `copilot-instructions.md` for conventions
+   - Open a **draft PR** with the change + test results
+5. Review like any human PR. The standard CI (`build-test` + `infra` + `deploy`) will run on the PR branch.
+
+### One-click Codespace
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/naikaakash/sap-assistant)
 
 ---
 
