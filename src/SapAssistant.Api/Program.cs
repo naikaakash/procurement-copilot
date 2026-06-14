@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpOverrides;
 using SapAssistant.Api.Auth;
 using SapAssistant.Api.Chat;
 using SapAssistant.Api.Endpoints;
@@ -8,12 +9,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 builder.Services.AddOpenApi();
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedHost;
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
+});
+
 builder.Services.AddSapAuth(builder.Configuration, builder.Environment);
 
 builder.Services.AddSingleton<IContestRepository, InMemoryContestRepository>();
 builder.Services.AddSingleton<IChatService, StubChatService>();
 
 var app = builder.Build();
+
+app.UseForwardedHeaders();
 
 app.MapDefaultEndpoints();
 
