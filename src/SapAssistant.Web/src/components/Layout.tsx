@@ -15,6 +15,7 @@ export function Layout() {
           </Link>
           {user && (
             <nav className="flex items-center gap-4 text-sm">
+              <NavLink to="/files" className={navClass}>Files</NavLink>
               <NavLink to="/contest" className={navClass}>Contest</NavLink>
               <NavLink to="/chat" className={navClass}>Chat</NavLink>
             </nav>

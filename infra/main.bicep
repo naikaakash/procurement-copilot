@@ -7,9 +7,11 @@
 //   - Log Analytics workspace (free tier 5GB/day cap)
 //   - Application Insights (workspace-based)
 //   - User-assigned Managed Identity (UAMI) → used by Container App
+//   - Storage Account (StandardLRS) + "uploads" blob container for Excel files
 //   - Container Apps Environment (Consumption workload profile, scale-to-zero)
 //   - Container App pulling a public image from GHCR
 //   - Key Vault RBAC: UAMI gets "Key Vault Secrets User"
+//   - Storage RBAC:   UAMI gets "Storage Blob Data Contributor"
 //
 // The Key Vault itself already exists (sapassistantkv01) and is RBAC-mode; we
 // only add the role assignment here. CI/CD updates the Container App image tag
@@ -41,6 +43,11 @@ var lawName         = '${appName}-law'
 var appiName        = '${appName}-appi'
 var envName         = '${appName}-env'
 var appResourceName = '${appName}-app'
+// Storage account names must be globally unique, 3-24 chars, lowercase alnum.
+// Suffix with a short hash of the RG id so re-deploys to the same RG land on
+// the same account.
+var storageName     = take(toLower('${appName}st${uniqueString(resourceGroup().id)}'), 24)
+var uploadsContainer = 'uploads'
 
 // -----------------------------------------------------------------------------
 // User-assigned Managed Identity
@@ -71,6 +78,43 @@ resource appi 'Microsoft.Insights/components@2020-02-02' = {
   properties: {
     Application_Type: 'web'
     WorkspaceResourceId: law.id
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Storage account for Excel uploads.
+// StandardLRS, HTTPS-only, OAuth-only (no shared keys for blob access),
+// no public blob access. The Container App's UAMI gets Blob Data Contributor.
+// -----------------------------------------------------------------------------
+resource storage 'Microsoft.Storage/storageAccounts@2024-01-01' = {
+  name: storageName
+  location: location
+  sku: { name: 'Standard_LRS' }
+  kind: 'StorageV2'
+  properties: {
+    minimumTlsVersion: 'TLS1_2'
+    supportsHttpsTrafficOnly: true
+    allowBlobPublicAccess: false
+    allowSharedKeyAccess: false
+    publicNetworkAccess: 'Enabled'
+    defaultToOAuthAuthentication: true
+    accessTier: 'Hot'
+  }
+}
+
+resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2024-01-01' = {
+  parent: storage
+  name: 'default'
+  properties: {
+    deleteRetentionPolicy: { enabled: true, days: 7 }
+  }
+}
+
+resource uploads 'Microsoft.Storage/storageAccounts/blobServices/containers@2024-01-01' = {
+  parent: blobService
+  name: uploadsContainer
+  properties: {
+    publicAccess: 'None'
   }
 }
 
@@ -139,7 +183,8 @@ resource app 'Microsoft.App/containerApps@2024-10-02-preview' = {
             { name: 'FrontendBaseUrl',         value: '/' }
             { name: 'AZURE_CLIENT_ID',         value: uami.properties.clientId }
             { name: 'APPLICATIONINSIGHTS_CONNECTION_STRING', value: appi.properties.ConnectionString }
-            { name: 'OTEL_EXPORTER_OTLP_ENDPOINT', value: 'https://${appi.properties.AppId}.in.applicationinsights.azure.com/' }
+            { name: 'Storage__AccountName',    value: storage.name }
+            { name: 'Storage__ContainerName',  value: uploadsContainer }
           ]
         }
       ]
@@ -180,6 +225,21 @@ resource kvRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
 }
 
 // -----------------------------------------------------------------------------
+// Storage role: UAMI → Storage Blob Data Contributor on the new account.
+// -----------------------------------------------------------------------------
+var blobDataContributorRoleId = 'ba92f5b4-2d11-453d-a403-e96b0029c9fe'
+
+resource storageRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  scope: storage
+  name: guid(storage.id, uami.id, blobDataContributorRoleId)
+  properties: {
+    principalId: uami.properties.principalId
+    principalType: 'ServicePrincipal'
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', blobDataContributorRoleId)
+  }
+}
+
+// -----------------------------------------------------------------------------
 // Outputs (consumed by CI logs + manual smoke testing)
 // -----------------------------------------------------------------------------
 output containerAppName     string = app.name
@@ -189,3 +249,5 @@ output uamiClientId         string = uami.properties.clientId
 output uamiPrincipalId      string = uami.properties.principalId
 output envName              string = env.name
 output appInsightsName      string = appi.name
+output storageAccountName   string = storage.name
+output uploadsContainerName string = uploadsContainer

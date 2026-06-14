@@ -4,6 +4,7 @@ import { RequireAuth } from "@/components/RequireAuth";
 import { Landing } from "@/pages/Landing";
 import { Contest } from "@/pages/Contest";
 import { Chat } from "@/pages/Chat";
+import { Files } from "@/pages/Files";
 import { AuthProvider } from "@/lib/auth";
 
 export default function App() {
@@ -26,6 +27,14 @@ export default function App() {
               element={
                 <RequireAuth>
                   <Chat />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="files"
+              element={
+                <RequireAuth>
+                  <Files />
                 </RequireAuth>
               }
             />

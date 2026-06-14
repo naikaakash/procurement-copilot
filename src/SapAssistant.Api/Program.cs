@@ -1,8 +1,12 @@
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpOverrides;
 using SapAssistant.Api.Auth;
 using SapAssistant.Api.Chat;
 using SapAssistant.Api.Endpoints;
+using SapAssistant.Api.Files;
 using SapAssistant.Api.Storage;
+using Azure.Core;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +24,35 @@ builder.Services.AddSapAuth(builder.Configuration, builder.Environment);
 
 builder.Services.AddSingleton<IContestRepository, InMemoryContestRepository>();
 builder.Services.AddSingleton<IChatService, StubChatService>();
+
+// File-upload pipeline. Cap is mirrored in:
+//   - Kestrel  (MaxRequestBodySize)        -> server-wide hard ceiling
+//   - FormOptions.MultipartBodyLengthLimit -> multipart parser ceiling
+//   - FilesEndpoints.MaxUploadBytes        -> per-file business rule
+builder.Services.Configure<FormOptions>(o =>
+{
+    o.MultipartBodyLengthLimit = FilesEndpoints.MaxUploadBytes;
+});
+builder.WebHost.ConfigureKestrel(k =>
+{
+    k.Limits.MaxRequestBodySize = FilesEndpoints.MaxUploadBytes;
+});
+
+builder.Services.Configure<FileStoreOptions>(builder.Configuration.GetSection("Storage"));
+builder.Services.AddSingleton<TokenCredential>(_ => new DefaultAzureCredential());
+
+var storageSection = builder.Configuration.GetSection("Storage");
+var useInMemoryStore = storageSection.GetValue<bool>("UseInMemory")
+    || string.IsNullOrWhiteSpace(storageSection["AccountName"]);
+
+if (useInMemoryStore)
+{
+    builder.Services.AddSingleton<IFileStore, InMemoryFileStore>();
+}
+else
+{
+    builder.Services.AddSingleton<IFileStore, BlobFileStore>();
+}
 
 var app = builder.Build();
 
@@ -51,6 +84,7 @@ api.MapGet("/hello", () => new { message = "Hello from SapAssistant.Api", utc = 
 app.MapAccountEndpoints(builder.Configuration, app.Environment);
 app.MapContestEndpoints();
 app.MapChatEndpoints();
+app.MapFilesEndpoints();
 
 var authDisabled = builder.Configuration.GetValue<bool>("Auth:Disable")
                    || app.Environment.EnvironmentName == "Testing";
