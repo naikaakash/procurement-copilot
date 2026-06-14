@@ -1,6 +1,7 @@
 using Azure.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Web;
 
 namespace SapAssistant.Api.Auth;
@@ -75,6 +76,29 @@ public static class AuthConfig
                 // string the SPA can read and surface to the user.
                 o.Events.OnRemoteFailure = ctx =>
                 {
+                    var logger = ctx.HttpContext.RequestServices
+                        .GetRequiredService<ILoggerFactory>()
+                        .CreateLogger("SapAuth.RemoteFailure");
+
+                    // Log enough context to diagnose Correlation/Nonce/State issues without
+                    // leaking secret values. We log COOKIE NAMES and the failure message —
+                    // the cookie value is never logged.
+                    var cookieNames = string.Join(",", ctx.Request.Cookies.Keys);
+                    var forwardedProto = ctx.Request.Headers["X-Forwarded-Proto"].ToString();
+                    var forwardedHost = ctx.Request.Headers["X-Forwarded-Host"].ToString();
+                    logger.LogWarning(
+                        "OIDC remote failure: {Message}. RequestPath={Path} Scheme={Scheme} Host={Host} "
+                        + "X-Forwarded-Proto={XFP} X-Forwarded-Host={XFH} Cookies=[{Cookies}] "
+                        + "InnerEx={Inner}",
+                        ctx.Failure?.Message,
+                        ctx.Request.Path,
+                        ctx.Request.Scheme,
+                        ctx.Request.Host.Value,
+                        forwardedProto,
+                        forwardedHost,
+                        cookieNames,
+                        ctx.Failure?.InnerException?.ToString());
+
                     ctx.HandleResponse();
                     var reason = Uri.EscapeDataString(ctx.Failure?.Message ?? "unknown");
                     ctx.Response.Redirect($"/?auth=error&reason={reason}");
