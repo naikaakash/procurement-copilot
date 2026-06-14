@@ -42,9 +42,14 @@ public static class AccountEndpoints
             });
         }).WithName("Me");
 
-        // Only redirect / in dev (where the SPA lives on a different port).
-        // In prod the static-file middleware + SPA fallback serves index.html.
-        if (env.IsDevelopment() || env.EnvironmentName == "Testing")
+        // Only register the dev-mode root redirect when the SPA lives on a
+        // different origin (Aspire dev: FrontendBaseUrl=http://localhost:5173).
+        // If FrontendBaseUrl is "/" or a relative path, the SPA is served from
+        // wwwroot/ on this same origin and the static-file middleware handles
+        // `/` -> index.html. Redirecting `/` -> `/` here would cause
+        // ERR_TOO_MANY_REDIRECTS.
+        if ((env.IsDevelopment() || env.EnvironmentName == "Testing")
+            && Uri.TryCreate(frontendBaseUrl, UriKind.Absolute, out _))
         {
             app.MapGet("/", () => Results.Redirect(frontendBaseUrl)).ExcludeFromDescription();
         }
