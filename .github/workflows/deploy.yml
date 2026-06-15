@@ -32,6 +32,11 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  # NOTE: these env vars are workflow-level. The `azure/cli@v2` action runs
+  # its inlineScript inside its own Docker container which does NOT inherit
+  # runner env vars unless explicitly forwarded. So any inlineScript that
+  # needs these must use GitHub Actions expressions (`${{ env.X }}`) at
+  # render time, not bash `$X` at runtime.
   AZURE_RG: sap-assistant-rg
   CONTAINER_APP: sapassistant-app
   IMAGE: ghcr.io/${{ github.repository }}
@@ -82,9 +87,9 @@ jobs:
         with:
           inlineScript: |
             az deployment group create \
-              --resource-group "$AZURE_RG" \
+              --resource-group "sap-assistant-rg" \
               --template-file infra/main.bicep \
-              --parameters containerImage="${IMAGE}:${{ steps.tag.outputs.value }}" \
+              --parameters containerImage="ghcr.io/${{ github.repository }}:${{ steps.tag.outputs.value }}" \
               --query "properties.outputs.containerAppUrl.value" -o tsv \
               | tee deployed-url.txt
             echo "Deployed: $(cat deployed-url.txt)"
@@ -95,8 +100,8 @@ jobs:
           inlineScript: |
             for i in $(seq 1 24); do
               status=$(az containerapp revision list \
-                --name "$CONTAINER_APP" \
-                --resource-group "$AZURE_RG" \
+                --name "sapassistant-app" \
+                --resource-group "sap-assistant-rg" \
                 --query "[?properties.active].{name:name,health:properties.healthState,running:properties.runningState}" -o json \
                 | tee /tmp/rev.json)
               if echo "$status" | grep -q '"health": "Healthy"'; then
@@ -115,7 +120,7 @@ jobs:
         uses: azure/cli@v2
         with:
           inlineScript: |
-            URL=$(az containerapp show -g "$AZURE_RG" -n "$CONTAINER_APP" --query "properties.configuration.ingress.fqdn" -o tsv)
+            URL=$(az containerapp show -g "sap-assistant-rg" -n "sapassistant-app" --query "properties.configuration.ingress.fqdn" -o tsv)
             echo "Hitting https://$URL/api/health"
             for i in $(seq 1 12); do
               code=$(curl -s -o /tmp/body -w "%{http_code}" "https://$URL/api/health" || echo "000")
