@@ -382,6 +382,14 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
     if (typeof window === 'undefined') return;
     try { window.localStorage.setItem('pc.sidebar.collapsed', sidebarCollapsed ? '1' : '0'); } catch {}
   }, [sidebarCollapsed]);
+  // Auto-close the diagnostics panel and user menu when the sidebar collapses,
+  // so their content doesn't leak out of the 60px rail.
+  useEffect(() => {
+    if (sidebarCollapsed) {
+      setShowDiagnostics(false);
+      setUserMenuOpen(false);
+    }
+  }, [sidebarCollapsed]);
 
   // Auth.js session for the user account button in the sidebar footer
   const [session, setSession] = useState<{ user?: { name?: string | null; email?: string | null; image?: string | null } } | null>(null);
@@ -2035,6 +2043,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
             {/* System Diagnostics Collapsible Panel */}
             <div style={{ overflow: 'hidden' }}>
               <button
+                className="sidebar-diagnostics-button"
                 onClick={() => setShowDiagnostics(d => !d)}
                 title="System Diagnostics"
                 style={{
