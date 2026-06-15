@@ -27,24 +27,63 @@ declare module "next-auth" {
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
     MicrosoftEntraID({
-      // Public-client / PKCE-only flow. The redirect URI for this app is
-      // registered as a SPA redirect (required to make personal Microsoft
-      // accounts work via login.live.com); SPA registrations force public-
-      // client semantics, so we must NOT send the client_secret to the token
-      // endpoint. Auth.js still lets us optionally provide one for the
-      // confidential branch, but we override `token_endpoint_auth_method` to
-      // `none` so PKCE is the only proof of possession we send.
+      // Override the provider scope to drop `User.Read` (Microsoft Graph
+      // delegated permission). MSA / personal Microsoft accounts struggle to
+      // consent to Graph scopes on a multi-tenant app and that has been
+      // observed to make MS's token endpoint return `invalid_request`. We
+      // only need openid/profile/email for sign-in.
+      authorization: { params: { scope: "openid profile email" } },
+      // Since we no longer hold a `User.Read` access token, override
+      // `profile()` so it doesn't try to fetch the photo from Graph.
+      profile(profile) {
+        return {
+          id: profile.sub,
+          name: profile.name,
+          email: profile.email,
+          image: null,
+        };
+      },
       clientId: process.env.AUTH_MICROSOFT_ENTRA_ID_ID,
       clientSecret: process.env.AUTH_MICROSOFT_ENTRA_ID_SECRET,
       issuer: process.env.AUTH_MICROSOFT_ENTRA_ID_ISSUER,
-      client: {
-        token_endpoint_auth_method: "none",
-      },
+      // We've registered the redirect URI as both web AND spa on the Entra
+      // app (required to get past MSA's login.live.com authorize check).
+      // SPA-registered URIs are treated as public clients by MS, so the token
+      // request must NOT include `client_secret` — force PKCE-only auth.
+      client: { token_endpoint_auth_method: "none" },
     }),
   ],
   session: { strategy: "jwt" },
   trustHost: true,
   debug: true,
+  logger: {
+    error(error) {
+      // Auth.js v5's default logger swallows the `cause` field — which is
+      // exactly where Microsoft puts `error_description` / `error_uri` /
+      // `trace_id`. Dump them explicitly so we can diagnose token-endpoint
+      // failures from container logs.
+      const anyErr = error as unknown as { message?: string; cause?: unknown; stack?: string };
+      console.error(
+        "[auth][error-detail]",
+        JSON.stringify(
+          {
+            name: error?.name,
+            message: anyErr?.message,
+            cause: anyErr?.cause,
+          },
+          null,
+          2,
+        ),
+      );
+      if (anyErr?.stack) console.error("[auth][error-stack]", anyErr.stack);
+    },
+    warn(code) {
+      console.warn("[auth][warn]", code);
+    },
+    debug(code, metadata) {
+      console.log("[auth][debug]", code, metadata ? JSON.stringify(metadata) : "");
+    },
+  },
   callbacks: {
     async jwt({ token, profile }) {
       if (profile) {
