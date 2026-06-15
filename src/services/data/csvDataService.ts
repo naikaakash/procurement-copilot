@@ -308,6 +308,15 @@ export interface ExceptionDetail extends OverdueWorklistItem {
     response_source: string;
     buyer_followup_count: number;
   } | null;
+  all_acknowledgements?: Array<{
+    acknowledgement_status: string;
+    acknowledged_qty: number;
+    committed_delivery_date: string;
+    supplier_confirm_number: string;
+    last_supplier_response_date: string;
+    response_source: string;
+    buyer_followup_count: number;
+  }>;
   communication_logs: Array<{
     message_id: string;
     direction: string;
@@ -671,7 +680,7 @@ export async function getOverdueSummary(): Promise<OverdueSummary> {
   const overdueWorklist = await fetchJoinedWorklist();
   
   // Filter out any strictly RESOLVED ones if needed, but summary usually shows active overdue items
-  const activeOverdue = overdueWorklist.filter(item => item.status !== 'RESOLVED');
+  const activeOverdue = overdueWorklist.filter(item => item.status !== 'RESOLVED' && item.days_overdue > 0);
   
   const totalOverduePoLines = activeOverdue.length;
   const criticalOverduePoLines = activeOverdue.filter(item => item.days_overdue > 7).length;
@@ -858,6 +867,8 @@ export async function getExceptionDetail(
   const supplier = suppliersRaw.find(s => s.supplier_id === (poHeader.supplier_id || baseItem?.supplier_id)) || {};
   const plantInfo = plantsRaw.find(p => p.plant === (poItem.plant || baseItem?.plant)) || {};
   const ack = acksRaw.find(a => a.po_number === poNumber && padItemNumber(a.item_number) === padItemNumber(itemNumber));
+  // Issues 9 & 10: Collect ALL acknowledgement records for this PO/item (some items may have multiple confirmations)
+  const allAcks = acksRaw.filter(a => a.po_number === poNumber && padItemNumber(a.item_number) === padItemNumber(itemNumber));
   
   // Sourced Lead Time and Safety Stock from material_plant.csv
   const matPlant = mpRaw.find(mp => mp.material_id === poItem.material_id && mp.plant === poItem.plant) || {};
@@ -926,6 +937,13 @@ export async function getExceptionDetail(
       const responses = JSON.parse(fs.readFileSync(responsesPath, 'utf8'));
       responses.forEach((r: any) => {
         if (r.purchaseOrderNumber === poNumber && r.purchaseOrderItem === itemNumber) {
+          const negativeCategories = ['REJECTED', 'PRICE_ISSUE', 'QTY_DISPUTE', 'DELIVERY_DATE_CHANGED', 'PARTIAL_REJECTION', 'DISPUTE'];
+          const positiveCategories = ['ACCEPTED_AS_IS', 'CONFIRMED', 'FULLY_CONFIRMED', 'ACCEPTED'];
+          const responseSentiment = negativeCategories.includes(r.responseCategory)
+            ? 'negative'
+            : positiveCategories.includes(r.responseCategory)
+              ? 'positive'
+              : 'neutral';
           extraLogs.push({
             message_id: r.responseId,
             direction: 'INBOUND',
@@ -933,7 +951,7 @@ export async function getExceptionDetail(
             body: r.rawResponseText || '',
             sent_date: '',
             received_date: r.respondedAt || r.capturedAt || '',
-            sentiment: 'neutral',
+            sentiment: responseSentiment,
             source_system: 'Supplier response received'
           });
         }
@@ -1100,6 +1118,15 @@ export async function getExceptionDetail(
     latest_goods_receipt_date: latestGr ? latestGr.posting_date : '',
     asn_details: itemAsns,
     acknowledgement_details: ackDetails,
+    all_acknowledgements: allAcks.length > 0 ? allAcks.map((a: any) => ({
+      acknowledgement_status: a.acknowledgement_status || 'MISSING',
+      acknowledged_qty: parseFloat(a.acknowledged_qty || '0'),
+      committed_delivery_date: a.committed_delivery_date || '',
+      supplier_confirm_number: a.supplier_confirm_number || '',
+      last_supplier_response_date: a.last_supplier_response_date || '',
+      response_source: a.response_source || '',
+      buyer_followup_count: parseInt(a.buyer_followup_count || '0', 10)
+    })) : undefined,
     communication_logs: combinedLogs,
     priorityScore: baseItem !== undefined ? baseItem.priorityScore : priorityScore,
     priorityLevel: baseItem !== undefined ? baseItem.priorityLevel : priorityLevel,
@@ -1218,7 +1245,7 @@ export async function getGlobalOverviewSummary() {
 
   // Overdue PO Lines: exception_worklist 'PO_OVERDUE' only
   const overdueWorklist = await fetchJoinedWorklist();
-  const overduePoLines = overdueWorklist.filter(e => e.status !== 'RESOLVED').length;
+  const overduePoLines = overdueWorklist.filter(e => e.status !== 'RESOLVED' && e.days_overdue > 0).length;
 
   // Missing Acknowledgements: count acks with MISSING
   const ackWorklist = await fetchJoinedAcknowledgementWorklist();
@@ -1293,6 +1320,7 @@ export async function getGlobalOverviewSummary() {
     totalPoLines,
     openPoLines,
     overduePoLines,
+    criticalOverdueLines: overdueWorklist.filter(e => e.status !== 'RESOLVED' && e.days_overdue > 7).length,
     missingAck,
     asnDelays,
     suppliers: suppliers.size,
@@ -1640,7 +1668,35 @@ async function fetchJoinedAcknowledgementWorklist(): Promise<AcknowledgementWork
     };
   });
 
-  return joinedList.filter(item => {
+  // Issue 7: Exclude items whose exceptions have been closed in app-recommendations.json
+  // A MISSING acknowledgement for a closed exception is no longer actionable.
+  const closedExceptionKeys = new Set<string>();
+  try {
+    const recPath = path.join(process.cwd(), 'data', 'app-recommendations.json');
+    if (fs.existsSync(recPath)) {
+      const recommendations = JSON.parse(fs.readFileSync(recPath, 'utf8'));
+      const closedStatuses = ['CLOSED', 'CLOSED_NO_ACTION', 'CONFIRMED_RESOLVED'];
+      recommendations.forEach((r: any) => {
+        if (closedStatuses.includes(r.lifecycleStatus)) {
+          const key = `${r.purchaseOrderNumber}_${r.purchaseOrderItem}`;
+          closedExceptionKeys.add(key);
+        }
+      });
+    }
+  } catch (e) {
+    console.error('[fetchJoinedAcknowledgementWorklist] Failed to read app-recommendations.json:', e);
+  }
+
+  // Override acknowledgement_status for closed exceptions so they are treated as resolved
+  const resolvedJoinedList = joinedList.map(item => {
+    const itemKey = `${item.po_number}_${item.item_number}`;
+    if (closedExceptionKeys.has(itemKey) && item.acknowledgement_status === 'MISSING') {
+      return { ...item, acknowledgement_status: 'RESOLVED' };
+    }
+    return item;
+  });
+
+  return resolvedJoinedList.filter(item => {
     const itemKey = `${item.po_number}_${item.item_number}`;
     const poItem = itemsMap.get(itemKey) || {};
     const poHeader = headersMap.get(item.po_number) || {};

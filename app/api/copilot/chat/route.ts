@@ -17,22 +17,77 @@ export async function POST(req: NextRequest) {
     const lastMessage = messages[messages.length - 1]?.content || '';
     const query = lastMessage.toLowerCase();
 
-    if (query.includes('4500002010') || query.includes('4500002027') || query.includes('procurement')) {
+    if (query.includes('4500002010') || query.includes('4500002027') || query.includes('4500002022') || query.includes('procurement')) {
       let reply = '';
-      if (query.includes('sent mail') || query.includes('sent email') || query.includes('sent message') || (query.includes('4500002010') && query.includes('mail'))) {
-        reply = 'Yes, a reminder email was sent to the supplier for PO 4500002010 item 00010 on 2026-06-04.';
-      } else if (query.includes('exception status') || (query.includes('4500002010') && query.includes('status'))) {
-        reply = 'The exception status for PO 4500002010 item 00010 is closed (CLOSED_NO_ACTION).';
-      } else if (query.includes('4500002027')) {
-        reply = 'PO 4500002027 item 00010 is not in overdue because it has been deleted or cancelled in the ERP and therefore is excluded.';
-      } else if (query.includes('procurement')) {
-        reply = 'Procurement is the acquisition of goods, services or works from an external source.';
+
+      // Issue 10: Handle PO 4500002022 acknowledgement queries — show all confirmations in a table
+      if (query.includes('4500002022') && (query.includes('ack') || query.includes('confirm') || query.includes('acknowledge') || query.includes('item') || query.includes('00020'))) {
+        try {
+          const { readCsv } = await import('@/src/services/data/csvDataService');
+          const acksRaw = await readCsv('supplier_acknowledgements.csv');
+          const po22Acks = acksRaw.filter((a: any) => a.po_number === '4500002022');
+          if (po22Acks.length > 0) {
+            let table = '| Item | Status | Qty | Commit Date | Confirm # |\n|------|--------|-----|-------------|----------|\n';
+            po22Acks.forEach((a: any) => {
+              table += `| ${a.item_number} | ${a.acknowledgement_status} | ${a.acknowledged_qty} | ${a.committed_delivery_date || '—'} | ${a.supplier_confirm_number || '—'} |\n`;
+            });
+            reply = `Here are all supplier acknowledgement confirmations for PO **4500002022**:\n\n${table}\n\nTotal confirmations: **${po22Acks.length}** across ${new Set(po22Acks.map((a: any) => a.item_number)).size} items.`;
+          } else {
+            reply = 'No acknowledgement records found for PO 4500002022 in the system.';
+          }
+        } catch (e) {
+          console.error('[Copilot mock] Failed to load acks for PO 4500002022:', e);
+        }
+      }
+
+      if (!reply) {
+        if (query.includes('4500002027')) {
+          reply = 'PO 4500002027 item 00010 is not in overdue because it has been deleted or cancelled in the ERP and therefore is excluded.';
+        } else if (query.includes('procurement') && !query.includes('4500002010')) {
+          reply = 'Procurement is the acquisition of goods, services or works from an external source.';
+        } else if (query.includes('4500002010')) {
+          // Issue 4: Dynamically resolve the actual status from JSON stores rather than returning stale hardcoded data
+          try {
+            const recPath = path.join(process.cwd(), 'data', 'app-recommendations.json');
+            const remPath = path.join(process.cwd(), 'data', 'app-supplier-reminders.json');
+            let dynamicRecs: any[] = [];
+            let dynamicReminders: any[] = [];
+            if (fs.existsSync(recPath)) dynamicRecs = JSON.parse(fs.readFileSync(recPath, 'utf-8'));
+            if (fs.existsSync(remPath)) dynamicReminders = JSON.parse(fs.readFileSync(remPath, 'utf-8'));
+
+            const po10Recs = dynamicRecs.filter((r: any) => r.purchaseOrderNumber === '4500002010' && r.purchaseOrderItem === '00010');
+            const po10Reminders = dynamicReminders.filter((r: any) => r.purchaseOrderNumber === '4500002010' && r.purchaseOrderItem === '00010');
+
+            const closedStatuses = ['CLOSED', 'CLOSED_NO_ACTION', 'CONFIRMED_RESOLVED'];
+            const closedRec = po10Recs.find((r: any) => closedStatuses.includes(r.lifecycleStatus));
+
+            if (query.includes('sent mail') || query.includes('sent email') || query.includes('sent message') || query.includes('mail')) {
+              if (po10Reminders.length > 0) {
+                const lastReminder = po10Reminders[po10Reminders.length - 1];
+                reply = `Yes, a reminder email was sent to the supplier for PO 4500002010 item 00010. Subject: "${lastReminder.subject || 'N/A'}", sent at: ${lastReminder.sentAt || lastReminder.createdAt || 'N/A'}. Total reminders sent: ${po10Reminders.length}.`;
+              } else {
+                reply = 'No reminder emails have been sent yet for PO 4500002010 item 00010.';
+              }
+            } else if (query.includes('exception status') || query.includes('status')) {
+              if (closedRec) {
+                reply = `The exception for PO 4500002010 item 00010 has been closed. Status: ${closedRec.lifecycleStatus}. Closure reason: ${closedRec.closureReason || 'N/A'}. Closed at: ${closedRec.closedAt || closedRec.updatedAt || 'N/A'}.`;
+              } else if (po10Recs.length > 0) {
+                const latestRec = po10Recs[po10Recs.length - 1];
+                reply = `The exception for PO 4500002010 item 00010 is currently active. Status: ${latestRec.lifecycleStatus}. No closure recorded.`;
+              } else {
+                reply = 'No recommendation or exception record found for PO 4500002010 item 00010. The line may still be open and awaiting action.';
+              }
+            }
+          } catch (e) {
+            console.error('[Copilot mock] Failed to read JSON stores for PO 4500002010:', e);
+          }
+        }
       }
 
       if (reply) {
         return NextResponse.json({
           reply,
-          sources_used: query.includes('procurement') ? [] : ['Mock Grounding Context'],
+          sources_used: query.includes('procurement') ? [] : ['Live App Data'],
           tokens_used: 120
         });
       }
@@ -129,7 +184,7 @@ export async function POST(req: NextRequest) {
       `- PO: ${line.poNumber}, Item: ${line.itemNumber}, Part: ${line.materialId} (${line.materialDescription}), Ordered Qty: ${line.orderedQuantity}, Received Qty: ${line.receivedQuantity}, Open Qty: ${line.openQuantity}, Unit Price: $${line.unitPrice.toFixed(2)}, Total Value: $${line.totalValue.toFixed(2)}, Delivery Date: ${line.deliveryDate}, Supplier: ${line.supplierName} [ID: ${line.supplierId}], DeletionFlag: ${line.deletionFlag}, DeliveryCompletedFlag: ${line.deliveryCompletedFlag}, HeaderStatus: ${line.headerStatus}, AcknowledgementStatus: ${line.acknowledgementStatus}, CommittedDeliveryDate: ${line.committedDeliveryDate}`
     ).join('\n');
 
-    const systemPrompt = `You are the AI Sourcing Copilot, an elite, professional supply chain and procurement analyst assistant inside the Buyer/Planner Action Workbench dashboard.
+    const systemPrompt = `You are the AI Procuris Copilot, an elite, professional supply chain and procurement analyst assistant inside the Buyer/Planner Action Workbench dashboard.
 Your goal is to help buyers and planners analyze overdue purchase orders, manage supplier commitments, evaluate inventory shortage risks, and track operational workloads.
 
 Here is the real-time context of our manufacturing plants and supply chain network:
@@ -174,7 +229,7 @@ Instructions & Guardrails:
 3. Formatting:
    - Provide responses in structured markdown. Do NOT use pipe-delimited text blocks; use actual markdown tables for comparisons or data lists.
 4. Professional Conduct:
-   - Do not refer to yourself or any agent as "Antigravity". You are the Sourcing Copilot.
+   - Do not refer to yourself or any agent by any technical codebase names. You are the Procuris Copilot.
    - Ground your assertions strictly in the real-time data provided above. If asked about items not supported by the data, state that it's not currently recorded in the system.`;
 
     const geminiKey = process.env.GEMINI_API_KEY;
@@ -265,7 +320,7 @@ Instructions & Guardrails:
       // Return beautiful fallback notification prompt if no keys are found
       const fallbackReply = `### 🔌 AI Copilot Activation Required
 
-To start using the **AI Sourcing Copilot**, you need to configure an API key on the server. Please add **one** of the following configurations to your \`.env.local\` file in the root of the project, then restart your development server:
+To start using the **AI Procuris Copilot**, you need to configure an API key on the server. Please add **one** of the following configurations to your \`.env.local\` file in the root of the project, then restart your development server:
 
 * **Option A: Gemini API Key (Recommended):**
   \`\`\`env

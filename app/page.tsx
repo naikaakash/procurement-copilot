@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { MODULE_CONFIGS } from '@/src/config/modules';
 import type { ProcurementAction } from '@/src/types/procurementActions';
@@ -114,6 +114,15 @@ interface ExceptionDetail extends WorklistItem {
     response_source: string;
     buyer_followup_count: number;
   } | null;
+  all_acknowledgements?: Array<{
+    acknowledgement_status: string;
+    acknowledged_qty: number;
+    committed_delivery_date: string;
+    supplier_confirm_number: string;
+    last_supplier_response_date: string;
+    response_source: string;
+    buyer_followup_count: number;
+  }>;
   communication_logs: Array<{
     message_id: string;
     direction: string;
@@ -159,6 +168,7 @@ interface GlobalOverviewSummary {
   totalPoLines: number;
   openPoLines: number;
   overduePoLines: number;
+  criticalOverdueLines?: number;
   missingAck: number;
   asnDelays: number;
   suppliers: number;
@@ -345,6 +355,9 @@ export default function BuyerPlannerWorkbench() {
   const [coordMrpTimelineLoading, setCoordMrpTimelineLoading] = useState(false);
 
 
+  // Issue 5: Manual recipient email prompt state (when supplier email is missing)
+  const [emailPromptActive, setEmailPromptActive] = useState(false);
+  const [manualRecipientEmail, setManualRecipientEmail] = useState('');
 
   // AI Sourcing Copilot states (Phase 3A)
   const [copilotMessages, setCopilotMessages] = useState<any[]>([
@@ -359,6 +372,8 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
   ]);
   const [copilotInput, setCopilotInput] = useState('');
   const [copilotLoading, setCopilotLoading] = useState(false);
+  // Issue 6: Ref for Copilot chat container autoscroll
+  const copilotChatRef = useRef<HTMLDivElement>(null);
 
   // Phase 3B: AI Root Cause Analysis states
   const [aiRootCause, setAiRootCause] = useState<any | null>(null);
@@ -945,17 +960,25 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
             recommendationId: activeRecommendation.recommendation_id,
             subject: activeRecommendation.draft_subject,
             body: activeRecommendation.draft_message,
-            sentBy: 'buyer.demo'
+            sentBy: 'buyer.demo',
+            // Issue 5: Pass manually entered recipient email if supplied
+            ...(manualRecipientEmail.trim() ? { recipientEmail: manualRecipientEmail.trim() } : {})
           })
         });
 
         const data = await res.json();
         if (res.ok && data.success) {
+          setEmailPromptActive(false);
+          setManualRecipientEmail('');
           setActiveRecommendation({
             ...activeRecommendation,
             approval_status: 'SENT'
           });
           setToastMessage(data.message || '✓ Mock send complete: reminder logged. No Outlook email was sent.');
+        } else if (!res.ok && data.code === 'MISSING_EMAIL') {
+          // Issue 5: Supplier email is missing — prompt the buyer to enter it
+          setEmailPromptActive(true);
+          setToastMessage('⚠️ Supplier email not found. Please enter the recipient email address below.');
         } else {
           setToastMessage(`❌ ${data.error || 'Failed to send reminder email.'}`);
         }
@@ -1922,6 +1945,13 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
     setAiRootCause(null);
   }, [selectedItemKey]);
 
+  // Issue 6: Autoscroll Copilot chat to bottom whenever messages update
+  useEffect(() => {
+    if (copilotChatRef.current) {
+      copilotChatRef.current.scrollTop = copilotChatRef.current.scrollHeight;
+    }
+  }, [copilotMessages]);
+
   // Phase 4A, 4B & 4C: Load appropriate queue data when activeTab or agentSubTab changes
   useEffect(() => {
     if (activeTab === 'reminders') {
@@ -1999,9 +2029,14 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
               color: '#fff',
               flexShrink: 0,
             }}>
-              A
+              P
             </div>
-            <span className="sidebar-logo-text">Procurement Dashboard</span>
+            <div style={{ display: 'flex', flexDirection: 'column' }} className="sidebar-logo-text-wrapper">
+              <span className="sidebar-logo-text">Procuris</span>
+              <span className="sidebar-item-text" style={{ fontSize: '0.55rem', color: 'var(--text-muted)', fontWeight: 500, whiteSpace: 'nowrap', marginTop: '2px' }}>
+                Procurement exceptions. Prioritized. Resolved. Closed.
+              </span>
+            </div>
             <button
               type="button"
               className="sidebar-toggle"
@@ -2186,10 +2221,10 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
               <div className="animate-fade" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div>
                   <h1 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.2rem' }}>
-                    Procurement Executive Overview
+                    Procuris Executive Overview
                   </h1>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
-                    Executive control center compiling transactional, inventory, and supplier compliance API streams.
+                    Procurement exceptions. Prioritized. Resolved. Closed.
                   </p>
                 </div>
                 <button 
@@ -2230,9 +2265,9 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                   },
                   { 
                     title: 'Critical Overdue Lines', 
-                    value: overviewSummary?.overduePoLines ?? '-', 
+                    value: overviewSummary?.criticalOverdueLines ?? '-', 
                     desc: 'Active Exception Lines',
-                    alert: (overviewSummary?.overduePoLines ?? 0) > 0 
+                    alert: (overviewSummary?.criticalOverdueLines ?? 0) > 0 
                   },
                   { 
                     title: 'Suppliers Impacted', 
@@ -3985,7 +4020,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                                         <span className="timeline-desc">PO {selectedItemKey.po} created by {selectedDetail.created_by || 'system'}.</span>
                                       </div>
 
-                                      {/* 2. Ack Committed Date */}
+                                      {/* 2. Ack Committed Date - shows all confirmations if multiple exist */}
                                       <div className="timeline-node">
                                         <div className={`timeline-dot ${selectedDetail.acknowledgement_details ? 'active' : ''}`}></div>
                                         <span className="timeline-date">
@@ -4004,6 +4039,28 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                                              }
                                              return null;
                                            })()}
+                                           {/* Issues 9/10: Show all confirmations if there are multiple */}
+                                           {selectedDetail.all_acknowledgements && selectedDetail.all_acknowledgements.length > 1 && (
+                                             <div style={{ marginTop: '0.4rem', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '0.4rem' }}>
+                                               <span style={{ fontSize: '0.6rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>
+                                                 All {selectedDetail.all_acknowledgements.length} Confirmations
+                                               </span>
+                                               <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto auto', gap: '0.2rem 0.6rem', marginTop: '0.3rem', fontSize: '0.6rem' }}>
+                                                 <span style={{ fontWeight: 700, color: 'var(--text-muted)' }}>Status</span>
+                                                 <span style={{ fontWeight: 700, color: 'var(--text-muted)' }}>Qty</span>
+                                                 <span style={{ fontWeight: 700, color: 'var(--text-muted)' }}>Commit Date</span>
+                                                 <span style={{ fontWeight: 700, color: 'var(--text-muted)' }}>Confirm #</span>
+                                                 {selectedDetail.all_acknowledgements.map((a, ai) => (
+                                                   <React.Fragment key={ai}>
+                                                     <span style={{ color: a.acknowledgement_status === 'MISSING' ? '#fdba74' : '#34d399' }}>{a.acknowledgement_status}</span>
+                                                     <span style={{ color: 'var(--text-secondary)' }}>{a.acknowledged_qty}</span>
+                                                     <span style={{ color: 'var(--text-secondary)' }}>{a.committed_delivery_date || '—'}</span>
+                                                     <span style={{ color: 'var(--text-muted)' }}>{a.supplier_confirm_number || '—'}</span>
+                                                   </React.Fragment>
+                                                 ))}
+                                               </div>
+                                             </div>
+                                           )}
                                          </span></div>
 
                                       {/* 3. ASN Ship Date */}
@@ -4689,6 +4746,58 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                                             </div>
                                           )}
 
+                                          {/* Issue 5: Manual Recipient Email Prompt (when supplier email is missing) */}
+                                          {emailPromptActive && (
+                                            <div style={{
+                                              background: 'rgba(234, 179, 8, 0.05)',
+                                              border: '1px solid rgba(234, 179, 8, 0.25)',
+                                              borderRadius: '0.375rem',
+                                              padding: '0.75rem',
+                                              display: 'flex',
+                                              flexDirection: 'column',
+                                              gap: '0.5rem',
+                                              fontSize: '0.7rem'
+                                            }}>
+                                              <span style={{ fontWeight: 600, color: '#fbbf24' }}>⚠️ Supplier Email Missing</span>
+                                              <span style={{ color: 'var(--text-secondary)' }}>Enter the recipient email address to proceed with the send:</span>
+                                              <div style={{ display: 'flex', gap: '0.4rem' }}>
+                                                <input
+                                                  id="manual-recipient-email"
+                                                  type="email"
+                                                  placeholder="supplier@company.com"
+                                                  value={manualRecipientEmail}
+                                                  onChange={(e) => setManualRecipientEmail(e.target.value)}
+                                                  style={{
+                                                    flex: 1,
+                                                    background: 'var(--bg-surface)',
+                                                    border: '1px solid var(--border-color)',
+                                                    borderRadius: '0.25rem',
+                                                    color: 'var(--text-primary)',
+                                                    padding: '0.4rem 0.6rem',
+                                                    fontSize: '0.7rem'
+                                                  }}
+                                                />
+                                                <button
+                                                  disabled={!manualRecipientEmail.includes('@') || recommendationSaving}
+                                                  onClick={() => handleActionRecommendation('SENT')}
+                                                  style={{
+                                                    background: 'var(--color-primary)',
+                                                    border: 'none',
+                                                    borderRadius: '0.25rem',
+                                                    color: '#fff',
+                                                    padding: '0.4rem 0.75rem',
+                                                    fontSize: '0.7rem',
+                                                    fontWeight: 600,
+                                                    cursor: manualRecipientEmail.includes('@') ? 'pointer' : 'not-allowed',
+                                                    opacity: manualRecipientEmail.includes('@') ? 1 : 0.5
+                                                  }}
+                                                >
+                                                  {recommendationSaving ? 'Sending...' : 'Send'}
+                                                </button>
+                                              </div>
+                                            </div>
+                                          )}
+
                                           {/* Action buttons */}
                                           {activeRecommendation.approval_status !== 'SENT' && (
                                             <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
@@ -5279,7 +5388,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                                 <td style={{ padding: '0.65rem 0.5rem', color: 'var(--text-secondary)' }}>{item.plant}</td>
                                 {/* Confirmed vs Req Date */}
                                 <td style={{ padding: '0.65rem 0.5rem', color: 'var(--text-secondary)' }}>
-                                  {item.committed_delivery_date ? (
+                                  {item.committed_delivery_date && !['MISSING', 'RESOLVED'].includes(item.acknowledgement_status) ? (
                                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                                       <span style={{ fontWeight: 600, color: item.acknowledgement_status === 'PROMISED_LATE' ? '#fdba74' : 'var(--text-primary)' }}>
                                         📅 {item.committed_delivery_date}
@@ -8429,6 +8538,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
 
                 {/* Message Stream */}
                 <div 
+                  ref={copilotChatRef}
                   data-testid="copilot-chat-history"
                   style={{ 
                     flex: 1, 
