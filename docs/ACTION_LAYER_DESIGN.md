@@ -1,4 +1,4 @@
-# Action Layer Design — Aalok Sidekick
+# Action Layer Design — Procurement Copilot
 ## Release 1: Supplier Commitment Core (Phase 6B — Design Only)
 
 > [!IMPORTANT]
@@ -10,7 +10,7 @@
 
 ## 1. Purpose
 
-The Action Layer is the part of Aalok Sidekick that allows buyers to record their responses to procurement exceptions — follow-up notes, internal escalation flags, supplier contact records, and review status. It is distinct from reading ERP data and must be designed carefully to:
+The Action Layer is the part of Procurement Copilot that allows buyers to record their responses to procurement exceptions — follow-up notes, internal escalation flags, supplier contact records, and review status. It is distinct from reading ERP data and must be designed carefully to:
 
 - Respect the boundary between SAP-owned truth and app-owned workflow state.
 - Support future multi-user concurrency safely.
@@ -52,7 +52,7 @@ The following fields are owned by SAP and represent the official system of recor
 | Quality Inspection Results | `QMEL` | SAP quality module data |
 | Incoterms / Payment Terms | `LFM1` | Supplier procurement config |
 
-### 3.2 App-Owned Data (Managed by Aalok Sidekick)
+### 3.2 App-Owned Data (Managed by Procurement Copilot)
 
 The following data elements are created and maintained by the app. They represent buyer workflow state, not ERP state.
 
@@ -192,7 +192,7 @@ interface FollowUpAction {
   version: number;              // Incremented on every write
 
   // System
-  sourceSystem: 'SIDEKICK';    // Always 'SIDEKICK' for app-owned actions
+  sourceSystem: 'APP';    // Always 'APP' for app-owned actions
   sapSyncStatus: SapSyncStatus; // 'NOT_APPLICABLE' for pure app-owned actions
 }
 ```

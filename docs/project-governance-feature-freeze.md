@@ -1,6 +1,6 @@
 # 🔒 Project Governance: Feature Freeze
 
-This document records the official development freeze decision for the **Aalok Sidekick (Buyer/Planner Action Workbench)**.
+This document records the official development freeze decision for the **Procurement Copilot (Buyer/Planner Action Workbench)**.
 
 ---
 

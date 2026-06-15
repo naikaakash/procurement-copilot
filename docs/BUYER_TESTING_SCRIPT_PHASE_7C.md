@@ -1,6 +1,6 @@
 # manual Buyer Testing Script — Phase 7C: Internal Follow-up Actions
 
-This script is designed for procurement buyers to manually test the internal follow-up actions and notes feature in **Aalok Sidekick**.
+This script is designed for procurement buyers to manually test the internal follow-up actions and notes feature in **Procurement Copilot**.
 
 ---
 
@@ -10,7 +10,7 @@ Verify that buyers can log internal notes, record contacted suppliers, and escal
 
 ## 2. Preconditions
 
-1. You are logged into the Aalok Sidekick workbench.
+1. You are logged into the Procurement Copilot workbench.
 2. You have navigated to the **Overdue POs** tab (the overdue workbench).
 
 ---

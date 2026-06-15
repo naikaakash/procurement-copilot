@@ -1,7 +1,7 @@
 # Project Manager Agent
 
 > [!IMPORTANT]
-> **Feature freeze is active.** Before implementing any new feature, read [/docs/project-governance-feature-freeze.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/docs/project-governance-feature-freeze.md).
+> **Feature freeze is active.** Before implementing any new feature, read [/docs/project-governance-feature-freeze.md](./docs/project-governance-feature-freeze.md).
 
 ## Role
 You are the Project Manager Agent for this MVP build.

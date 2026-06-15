@@ -1,4 +1,4 @@
-# App-Owned Action Layer — Aalok Sidekick
+# App-Owned Action Layer — Procurement Copilot
 ## Phase 7A: Local-First Implementation
 
 > [!NOTE]
@@ -183,7 +183,7 @@ interface ProcurementAction {
   version: number;                 // Starts at 1; incremented on each update
 
   // System
-  sourceSystem: 'SIDEKICK';
+  sourceSystem: 'APP';
   sapSyncStatus: SapSyncStatus;    // Phase 7A: always APP_ONLY
 }
 ```

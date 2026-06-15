@@ -1,6 +1,6 @@
 # 📘 Manual Business Testing Guide
 
-This guide is designed for Senior SAP Procurement Testers and Business Analysts to perform manual end-to-end verification of the **Supplier Commitment Control Center**. It guides you through verifying the correctness of all calculations, status classifications, workflows, and dashboard numbers against the source PO database ([/data/mock-po-data.json](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/data/mock-po-data.json)).
+This guide is designed for Senior SAP Procurement Testers and Business Analysts to perform manual end-to-end verification of the **Supplier Commitment Control Center**. It guides you through verifying the correctness of all calculations, status classifications, workflows, and dashboard numbers against the source PO database ([/data/mock-po-data.json](./data/mock-po-data.json)).
 
 ---
 
@@ -59,7 +59,7 @@ This guide is designed for Senior SAP Procurement Testers and Business Analysts 
 *   **PASS criteria:** Metric matches 76.
 *   **FAIL criteria:** Metric displays closed, deleted, or negative quantity lines.
 *   **Priority:** Critical
-*   **Notes:** Refer to the [Drill-Down Section](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/docs/dashboard-reconciliation-guide.md) for exclusions.
+*   **Notes:** Refer to the [Drill-Down Section](./docs/dashboard-reconciliation-guide.md) for exclusions.
 
 ---
 
@@ -1456,7 +1456,7 @@ This guide is designed for Senior SAP Procurement Testers and Business Analysts 
 *   **Pre-condition:** High value overdue line.
 *   **Steps for me to perform:** Open details for PO `4500002022`.
 *   **Expected result in app:** Shows `CRITICAL` risk level and high priority score (>=75).
-*   **Manual validation method:** Verify math in [Risk Case TC-RK-01](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement 3 Agent project/buyer-planner-action-workbench/docs/business-validation-test-cases.md).
+*   **Manual validation method:** Verify math in [Risk Case TC-RK-01](file:///c:/Users/Aakash/Desktop/AI%20Projects/Procurement 3 Agent project/buyer-planner-action-workbench/docs/business-validation-test-cases.md).
 *   **Source fields to check:** `risk_category`
 *   **PASS criteria:** Matches.
 *   **FAIL criteria:** Mismatch.

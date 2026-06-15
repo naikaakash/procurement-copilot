@@ -1,6 +1,6 @@
 # Trusted Field Definitions Layer (Release 1)
 
-This document establishes the single source of truth for core business field definitions, calculations, granularity levels, and usage rules within **Aalok Sidekick — Release 1: Supplier Commitment Core**.
+This document establishes the single source of truth for core business field definitions, calculations, granularity levels, and usage rules within **Procurement Copilot — Release 1: Supplier Commitment Core**.
 
 ---
 

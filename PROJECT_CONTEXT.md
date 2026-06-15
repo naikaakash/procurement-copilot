@@ -1,7 +1,7 @@
-# Aalok Sidekick — Project Context & Rules
+# Procurement Copilot — Project Context & Rules
 
 > [!IMPORTANT]
-> **Feature freeze is active.** Before implementing any new feature, read [/docs/project-governance-feature-freeze.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/docs/project-governance-feature-freeze.md).
+> **Feature freeze is active.** Before implementing any new feature, read [/docs/project-governance-feature-freeze.md](./docs/project-governance-feature-freeze.md).
 
 This is a permanent project memory file. It defines the product direction, architectural constraints, and behavior rules for all developer sessions.
 
@@ -10,7 +10,7 @@ This is a permanent project memory file. It defines the product direction, archi
 
 ## 🎯 Product Direction
 
-* **Product Name:** Aalok Sidekick
+* **Product Name:** Procurement Copilot
 * **Vision:** A **Supplier Commitment Control Center** that manages supplier response cycles, identifies risks, and tracks delivery commitments.
 * **Current Version:** **Release 1 — Supplier Commitment Core**
 * **Core Operating Loop:**
@@ -238,7 +238,7 @@ No new feature development should be performed unless the user explicitly writes
 
 **I AGREE TO THE RISKS AND WANT TO PROCEED FORWARD**
 
-Until that phrase is provided, the agent must stop and warn the user if they ask for any new feature. Refer to the complete governance guidelines in [project-governance-feature-freeze.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/docs/project-governance-feature-freeze.md).
+Until that phrase is provided, the agent must stop and warn the user if they ask for any new feature. Refer to the complete governance guidelines in [project-governance-feature-freeze.md](./docs/project-governance-feature-freeze.md).
 
 ### Allowed Work During Freeze:
 *   Bug, calculation, or business logic fixes.

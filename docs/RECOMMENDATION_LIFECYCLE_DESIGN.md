@@ -1,17 +1,17 @@
-# Recommendation Lifecycle Design — Aalok Sidekick
+# Recommendation Lifecycle Design — Procurement Copilot
 
-This document details the product direction, architecture, and data structures for the **Recommendation Lifecycle** in **Aalok Sidekick**. 
+This document details the product direction, architecture, and data structures for the **Recommendation Lifecycle** in **Procurement Copilot**. 
 
 ---
 
 ## 1. Product Purpose & Philosophy
 
-Aalok Sidekick operates strictly as a **recommendation-and-verification workbench**, and is **not** the system of record for procurement transactions. It does not perform write-backs or direct mutations to SAP or the core procurement database.
+Procurement Copilot operates strictly as a **recommendation-and-verification workbench**, and is **not** the system of record for procurement transactions. It does not perform write-backs or direct mutations to SAP or the core procurement database.
 
 ### Core Philosophy: "Recommend, Do Not Mutate. Verify After Sync."
 1. **Source Immutability:** SAP (or the ERP source data) is the absolute system of record. PO quantities, delivery dates, prices, and acknowledgement records cannot be edited directly by the application.
 2. **Action Guidance:** The app detects issues, suggests targeted actions, facilitates communication logs, tracks supplier commitments, and proposes manual updates for the buyer to perform in SAP.
-3. **Closing the Loop via Verification:** After a buyer manually applies updates in SAP and a subsequent system sync occurs, Aalok Sidekick compares the new source data against the recommended target values. If they match, the recommendation is automatically verified and resolved. If they do not, it remains open for further follow-up.
+3. **Closing the Loop via Verification:** After a buyer manually applies updates in SAP and a subsequent system sync occurs, Procurement Copilot compares the new source data against the recommended target values. If they match, the recommendation is automatically verified and resolved. If they do not, it remains open for further follow-up.
 
 ```mermaid
 flowchart TD
@@ -210,7 +210,7 @@ export interface Recommendation {
 
 ## 8. Relationship with Existing Action Layer
 
-Aalok Sidekick already has an **App-Owned Action Layer** (using `ProcurementAction` and `procurementActionService.ts`). The table below outlines how `Recommendation` integrates with, but remains distinct from, `ProcurementAction`:
+Procurement Copilot already has an **App-Owned Action Layer** (using `ProcurementAction` and `procurementActionService.ts`). The table below outlines how `Recommendation` integrates with, but remains distinct from, `ProcurementAction`:
 
 | Feature | ProcurementAction (Existing) | Recommendation (Proposed) |
 | :--- | :--- | :--- |
@@ -224,9 +224,9 @@ Aalok Sidekick already has an **App-Owned Action Layer** (using `ProcurementActi
 
 ## 9. Ownership Boundaries
 
-To guarantee system stability, the boundary of what data is owned by Aalok Sidekick versus what is owned by the SAP ERP remains strictly separated:
+To guarantee system stability, the boundary of what data is owned by Procurement Copilot versus what is owned by the SAP ERP remains strictly separated:
 
-* **Aalok Sidekick (App-Owned):**
+* **Procurement Copilot (App-Owned):**
   * Recommendation lifecycle state (`RECOMMENDED`, `PENDING_BUYER_SAP_UPDATE`, etc.)
   * Supplier reminder transmission records (logs, draft templates)
   * Supplier response records (captured email/portal texts)
@@ -266,9 +266,9 @@ To prevent security vulnerabilities, architectural bloat, and scope leak, the fo
 We recommend implementing the recommendation lifecycle incrementally across the following phases:
 
 * **Phase 8B (Backend Lifecycle Setup) — [IMPLEMENTED]:**
-  - **Types:** Defined recommendation TypeScript types in [procurementRecommendations.ts](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/src/types/procurementRecommendations.ts).
-  - **Store:** Created [mockRecommendationStore.ts](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/src/services/mockRecommendationStore.ts) using local JSON persistence in `data/app-recommendations.json` with synchronous file flushing and thread-safe Maps.
-  - **Service:** Implemented [recommendationService.ts](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/src/services/recommendationService.ts) for service-level abstraction, fully decoupled from raw CSV files.
+  - **Types:** Defined recommendation TypeScript types in [procurementRecommendations.ts](./src/types/procurementRecommendations.ts).
+  - **Store:** Created [mockRecommendationStore.ts](./src/services/mockRecommendationStore.ts) using local JSON persistence in `data/app-recommendations.json` with synchronous file flushing and thread-safe Maps.
+  - **Service:** Implemented [recommendationService.ts](./src/services/recommendationService.ts) for service-level abstraction, fully decoupled from raw CSV files.
   - **API Routes:** Implemented Next.js routes supporting filtered queries (`GET /api/recommendations`), details (`GET /api/recommendations/[id]`), updates (`PATCH /api/recommendations/[id]`), status transitions (`POST /api/recommendations/[id]/transition`), action linking (`POST /api/recommendations/[id]/link-action`), PO line querying (`GET /api/recommendations/po-line`), and supplier querying (`GET /api/recommendations/supplier`).
   - **Optimistic Concurrency:** Validates matching `expectedVersion` headers/body fields against stored version, incrementing version numbers on write success and returning HTTP 409 Conflict on version mismatches.
   - **Seed Data:** Setup baseline seed cases in `data/app-recommendations.json` mapping to PO `4500000437`.

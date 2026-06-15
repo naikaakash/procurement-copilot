@@ -95,8 +95,8 @@ function runReset() {
   writeCsvFile('company_codes.csv', 
     ['company_code', 'company_name', 'currency'],
     [
-      ['US01', 'Aalok Electronics US', 'USD'],
-      ['DE01', 'Aalok Electronics DE', 'EUR']
+      ['US01', 'Acme Electronics US', 'USD'],
+      ['DE01', 'Acme Electronics DE', 'EUR']
     ]
   );
 
@@ -122,8 +122,8 @@ function runReset() {
   writeCsvFile('purchasing_groups.csv',
     ['purchasing_group', 'purchasing_group_name', 'buyer_email'],
     [
-      ['PG1', 'Austin Buyer', 'austin.buyer@aalok.com'],
-      ['PG2', 'Berlin Buyer', 'berlin.buyer@aalok.com']
+      ['PG1', 'Austin Buyer', 'austin.buyer@example.com'],
+      ['PG2', 'Berlin Buyer', 'berlin.buyer@example.com']
     ]
   );
 

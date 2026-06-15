@@ -9,20 +9,20 @@ Claude should append to this file at the end of every build session.
 
 **What happened:**
 - Graphify graph analyzed: 358 nodes, 356 edges, 65 communities
-- Project memory folder created in `aaloks_sidekick/project_memory/`
+- Project memory folder created in `project_memory/project_memory/`
 - Claude version folder scaffolded as sibling to base project
 - All memory files written based on graph analysis + walkthrough.md
 
 **Files created:**
-- `aaloks_sidekick/project_memory/README.md`
-- `aaloks_sidekick/project_memory/phase_status.md`
-- `aaloks_sidekick/project_memory/architecture_snapshot.md`
-- `aaloks_sidekick/project_memory/new_apis_needed.md`
-- `aaloks_sidekick/project_memory/ui_patterns.md`
-- `aaloks_sidekick/project_memory/coding_rules.md`
-- `aaloks_sidekick/project_memory/data_model.md`
-- `aaloks_sidekick/project_memory/phase_build_log.md` (this file)
-- `aaloks_sidekick/project_memory/known_issues.md`
+- `project_memory/project_memory/README.md`
+- `project_memory/project_memory/phase_status.md`
+- `project_memory/project_memory/architecture_snapshot.md`
+- `project_memory/project_memory/new_apis_needed.md`
+- `project_memory/project_memory/ui_patterns.md`
+- `project_memory/project_memory/coding_rules.md`
+- `project_memory/project_memory/data_model.md`
+- `project_memory/project_memory/phase_build_log.md` (this file)
+- `project_memory/project_memory/known_issues.md`
 - `CLAUDE_VERSION_SETUP.md` (project root — how to bootstrap the Claude version)
 
 **Status after this session:**

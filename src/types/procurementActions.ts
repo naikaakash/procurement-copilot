@@ -144,7 +144,7 @@ export interface ProcurementAction {
   version: number;                  // Starts at 1; incremented on each update
 
   // System
-  sourceSystem: 'SIDEKICK';         // Always 'SIDEKICK' — app-generated actions only
+  sourceSystem: 'APP';              // Always 'APP' — app-generated actions only (the SAP-sourced equivalent uses sapSyncStatus)
   sapSyncStatus: SapSyncStatus;     // Phase 7A: always APP_ONLY or NOT_APPLICABLE
 }
 

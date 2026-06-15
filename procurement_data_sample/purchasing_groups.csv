@@ -1,5 +1,5 @@
 purchasing_group,purchasing_group_name,buyer_email
-PG1,Alex Buyer Group,alex.buyer@aalok.com
-PG2,Sarah Planner Group,sarah.planner@aalok.com
-PG3,John Senior Group,john.senior@aalok.com
-PG4,Michael Lead Group,michael.lead@aalok.com
+PG1,Alex Buyer Group,alex.buyer@example.com
+PG2,Sarah Planner Group,sarah.planner@example.com
+PG3,John Senior Group,john.senior@example.com
+PG4,Michael Lead Group,michael.lead@example.com

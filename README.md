@@ -1,9 +1,6 @@
-# SAP Assistant — Buyer/Planner Action Workbench
+# Procurement Copilot
 
-> [!IMPORTANT]
-> **Feature freeze is active.** Before implementing any new feature, read [/docs/project-governance-feature-freeze.md](docs/project-governance-feature-freeze.md).
-
-An enterprise-grade supply chain control tower workbench. Designed for buyers and planners to immediately monitor and expedite overdue purchase order lines, manage supplier delay exposure, and mitigate inventory stock risks across all manufacturing plants.
+An enterprise-grade supply-chain control-tower workbench. Designed for buyers and planners to monitor and expedite overdue purchase-order lines, manage supplier delay exposure, and mitigate inventory stock risks across all manufacturing plants.
 
 **Stack:** Next.js 16 (App Router, Turbopack) · React 19 · TypeScript 5 · Auth.js v5 (Microsoft Entra ID) · deployed on Azure Container Apps via GitHub Actions + OIDC federation.
 
@@ -15,16 +12,23 @@ An enterprise-grade supply chain control tower workbench. Designed for buyers an
 - **CI/CD:** Push to `main` triggers `.github/workflows/deploy.yml` → builds the image to GHCR → `az deployment group create` rolls infra + image atomically → smoke-tests `/api/health`.
 - **Infra:** Single Bicep file at `infra/main.bicep` provisions UAMI, Log Analytics, App Insights, Container Apps Environment, and the Container App itself.
 
-Required env vars (all sourced from KV at runtime):
+> The Azure resource names (`sap-assistant-rg`, `sapassistant-app`, `sapassistantkv01`, `sapassistant-uami`) still carry the original project codename. Renaming them in place is destructive — they stay as-is for now. The GitHub repo, container image, and product name are all `procurement-copilot`.
 
-| Env var | KV secret |
+### Container image
+
+- Pushed by CI to **`ghcr.io/naikaakash/procurement-copilot`** (tags: `latest` + 7-char commit sha).
+- Pulled by the Container App via the Bicep `containerImage` parameter.
+
+### Required env vars (sourced from KV at runtime)
+
+| Env var | KV secret / source |
 |---|---|
-| `AUTH_SECRET` | `AUTH-SECRET` |
-| `AUTH_MICROSOFT_ENTRA_ID_ID` | `OAuth-Microsoft-ClientId` |
-| `AUTH_MICROSOFT_ENTRA_ID_SECRET` | `OAuth-Microsoft-ClientSecret` |
-| `AUTH_MICROSOFT_ENTRA_ID_ISSUER` | _hardcoded_ `https://login.microsoftonline.com/common/v2.0` |
-| `AUTH_URL` | _derived from Container App FQDN_ |
-| `AUTH_ALLOWED_EMAILS` | _Bicep param `authAllowedEmails`_ — comma-separated email/UPN allowlist. Empty = open. Default seeds the owner's account. Add teammates by re-running the deploy with `--parameters authAllowedEmails="a@x,b@y"`. |
+| `AUTH_SECRET` | KV secret `AUTH-SECRET` |
+| `AUTH_MICROSOFT_ENTRA_ID_ID` | KV secret `OAuth-Microsoft-ClientId` |
+| `AUTH_MICROSOFT_ENTRA_ID_SECRET` | KV secret `OAuth-Microsoft-ClientSecret` |
+| `AUTH_MICROSOFT_ENTRA_ID_ISSUER` | hardcoded `https://login.microsoftonline.com/common/v2.0` |
+| `AUTH_URL` | derived from Container App FQDN |
+| `AUTH_ALLOWED_EMAILS` | Bicep param `authAllowedEmails` — comma-separated email/UPN allowlist. Empty = open (NOT recommended in prod). |
 
 ### Entra app registration
 
@@ -32,61 +36,31 @@ The Entra app (`baacc761-0b8e-4881-832c-630c2365f532`, `signInAudience=AzureADan
 
 ## Local development
 
-### 1. Install Dependencies
-Ensure you have [Node.js](https://nodejs.org/) installed, then run:
 ```bash
 npm install
-```
-
-### 2. Run the Development Server
-Launch the local control tower server:
-```bash
 npm run dev
+# open http://localhost:3000
 ```
 
-### 3. Access the Control Tower
-Open your browser and navigate to:
-👉 [http://localhost:3000](http://localhost:3000)
+For local OAuth, register `http://localhost:3000/api/auth/callback/microsoft-entra-id` under the Entra app's `publicClient.redirectUris` (already done) and supply `AUTH_*` env vars via `.env.local`.
 
----
+## Architecture & data sourcing
 
-## 🛠️ Architecture & Data Sourcing
+- **Source of truth (today):** 26 relational CSV files under `procurement_data_sample/` — Exceptions, Purchase Order Headers, PO Items, Schedule Lines, Suppliers, Plants, Acknowledgment Status, ASN Shipment Schedules, etc.
+- **Service layer:** `src/services/data/csvDataService.ts` reads, joins, and aggregates the CSVs. Decoupled from the UI so a future swap to PostgreSQL only touches this file.
+- **API endpoints:**
+  - `GET /api/po-overdue/summary` — real-time aggregated metrics for the top dashboard cards
+  - `GET /api/po-overdue/worklist` — main workbench table (search + Plant / Supplier / Purchasing Group / Material Group / date / delay filters)
+  - `GET /api/po-overdue/detail` — full timeline, supplier profile, safety-stock parameters, recent comms (matched by PO + Item + Schedule Line)
+  - `GET /api/filters` — plants, suppliers, purchasing groups for frontend dropdowns
 
-### Phase 1A Data Model (decoupled from storage)
-To keep the application highly modular and prevent UI code rewrites during Phase 1B (PostgreSQL migration), we decoupled the data layer:
-* **Source of Truth**: Sourced directly from 26 local relational CSV files under `/procurement_data_sample`.
-* **API Service Layer**: `/src/services/data/csvDataService.ts` reads, joins, and aggregates relational CSV records (Exceptions, Purchase Order Headers, PO Items, Schedule Lines, Suppliers, Plants, Acknowledgment Status, and ASN Shipment Schedules).
-* **API Endpoints**:
-  * `GET /api/po-overdue/summary` — Returns real-time aggregated metrics for the top dashboard cards.
-  * `GET /api/po-overdue/worklist` — Serves the main workbench table, supporting searches and filters (Plant, Supplier, Purchasing Groups, Material Groups, Date Ranges, and Delay ranges).
-  * `GET /api/po-overdue/detail` — Sourced by matching PO Number + Item Number + Schedule Line, returning the full timeline, supplier profile, safety stock parameters, and recent communication logs.
-  * `GET /api/filters` — Provides lists of plants, suppliers, and purchasing groups to dynamic frontend filter dropdowns.
+## Development governance
 
-In Phase 1B, when migrating to local/Azure PostgreSQL, only `csvDataService.ts` needs to be updated (e.g. using Prisma or SQL queries). The frontend components remain entirely untouched.
+Lightweight per-role guidelines live in `dev_agents/`:
 
----
+- `dev_agents/project_manager.md` — scope guardrails and out-of-scope leakage checks
+- `dev_agents/business_analyst.md` — calculation-formula validation (days overdue, open value, open qty) and PO flow
+- `dev_agents/ui_ux_reviewer.md` — visual + interaction standards (readable slates, glassmorphism, drawer dimensions, hover states)
+- `dev_agents/tester_qa.md` — user stories and minimum manual test cases
 
-## 🛡️ Development & Validation Framework
-
-This MVP is governed by isolated development support agent guidelines located in the `/dev_agents` folder:
-* **[project_manager.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/dev_agents/project_manager.md)**: Confirms Phase 1A constraints and checks for out-of-scope leakages (no LLMs, chatbots, or PostgreSQL additions).
-* **[business_analyst.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/dev_agents/business_analyst.md)**: Validates calculation formulas (days overdue, open value, open qty) and PO flow.
-* **[ui_ux_reviewer.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/dev_agents/ui_ux_reviewer.md)**: Enforces readable slates, glassmorphism, side-panel drawer dimensions, and hover states.
-* **[tester_qa.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/dev_agents/tester_qa.md)**: Documents user stories and 13 minimum manual test cases.
-
-The final reviews and Phase 1B Go/No-Go checklist are filled in **[phase_1A_validation.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/dev_agents/phase_1A_validation.md)** before concluding this phase.
-
----
-
-## 🔒 Out-of-Scope (Locked for Phase 1B)
-* Active automated rescheduling inside ERP/SAP.
-* Custom AI-driven email draft generation.
-* Interactive supplier-agent LLM chatbot.
-* Cloud PostgreSQL deployment.
-
----
-
-## 🚦 Feature Freeze & Governance
-The application is currently in **single-user MVP validation mode** and under a strict **Feature Freeze**. No new feature development is permitted without explicit risk-acceptance. 
-
-Please review the complete guidelines, allowed tasks, and blocked scopes in [project-governance-feature-freeze.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/docs/project-governance-feature-freeze.md).
+Feature freeze and out-of-scope items are documented in [`docs/project-governance-feature-freeze.md`](docs/project-governance-feature-freeze.md).

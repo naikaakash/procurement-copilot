@@ -7,7 +7,7 @@ This report documents the test run outcomes, defect analysis, and final readines
 ## 1. Test Run Metadata
 
 * **Test Date:** June 8, 2026
-* **Tester:** Aalok Sidekick (AI Pair Programmer & Verification Simulation Runner)
+* **Tester:** Procurement Copilot (AI Pair Programmer & Verification Simulation Runner)
 * **Environment:** Development Server (`next dev` on Node.js / Windows local environment)
 * **Underlying Storage:** Local JSON file persistence (`data/app-actions.json`)
 
@@ -15,7 +15,7 @@ This report documents the test run outcomes, defect analysis, and final readines
 
 ## 2. Scenarios Tested & Pass/Fail Result
 
-A programmatic simulation of [BUYER_TESTING_SCRIPT_PHASE_7C.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/docs/BUYER_TESTING_SCRIPT_PHASE_7C.md) was executed against the active development server, verifying all major buyer-facing action pathways.
+A programmatic simulation of [BUYER_TESTING_SCRIPT_PHASE_7C.md](./docs/BUYER_TESTING_SCRIPT_PHASE_7C.md) was executed against the active development server, verifying all major buyer-facing action pathways.
 
 | Test Case | Scenario Description | Status | Details / Output |
 | :--- | :--- | :--- | :--- |
@@ -48,7 +48,7 @@ The action layer UI underwent complete hardening in Phase 7C:
 
 * **Source Procurement CSV Data:** Immutability verified. Files inside `procurement_data_sample/*.csv` remain completely unmodified.
 * **ERP Data Services:** Verified that `src/services/data/csvDataService.ts` and `src/services/procurementDataService.ts` were not modified and contain zero imports or logic leaks related to the action store.
-* **Local Persistence:** All action logs are written to and persisted strictly in the app-owned database [app-actions.json](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/data/app-actions.json).
+* **Local Persistence:** All action logs are written to and persisted strictly in the app-owned database [app-actions.json](./data/app-actions.json).
 
 ---
 

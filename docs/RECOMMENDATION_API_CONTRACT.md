@@ -1,4 +1,4 @@
-# Recommendation API Contract — Aalok Sidekick
+# Recommendation API Contract — Procurement Copilot
 
 This document details the route list, payloads, request/response examples, status codes, and constraints for the **Recommendation Lifecycle API** implemented in **Phase 8B**.
 

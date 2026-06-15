@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const projectDir = 'c:\\Users\\Aalok\\Desktop\\AI Projects\\Procurement 3 Agent project\\buyer-planner-action-workbench';
+const projectDir = path.resolve(__dirname, '..');
 const mockPoDataPath = path.join(projectDir, 'data', 'mock-po-data.json');
 const csvDir = path.join(projectDir, 'procurement_data_sample');
 const dataDir = path.join(projectDir, 'data');
@@ -60,9 +60,9 @@ function writeJsonFile(filename, data) {
 writeCsvFile('company_codes.csv', 
   ['company_code', 'company_name', 'currency'],
   [
-    ['US01', 'Aalok Electronics US', 'USD'],
-    ['EU01', 'Aalok Electronics EU', 'EUR'],
-    ['CA01', 'Aalok Electronics CA', 'CAD']
+    ['US01', 'Acme Electronics US', 'USD'],
+    ['EU01', 'Acme Electronics EU', 'EUR'],
+    ['CA01', 'Acme Electronics CA', 'CAD']
   ]
 );
 
@@ -91,10 +91,10 @@ writeCsvFile('purchasing_orgs.csv',
 writeCsvFile('purchasing_groups.csv',
   ['purchasing_group', 'purchasing_group_name', 'buyer_email'],
   [
-    ['PG1', 'Alex Buyer Group', 'alex.buyer@aalok.com'],
-    ['PG2', 'Sarah Planner Group', 'sarah.planner@aalok.com'],
-    ['PG3', 'John Senior Group', 'john.senior@aalok.com'],
-    ['PG4', 'Michael Lead Group', 'michael.lead@aalok.com']
+    ['PG1', 'Alex Buyer Group', 'alex.buyer@example.com'],
+    ['PG2', 'Sarah Planner Group', 'sarah.planner@example.com'],
+    ['PG3', 'John Senior Group', 'john.senior@example.com'],
+    ['PG4', 'Michael Lead Group', 'michael.lead@example.com']
   ]
 );
 

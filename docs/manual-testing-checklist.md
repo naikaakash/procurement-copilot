@@ -1,6 +1,6 @@
 # 📋 Manual Testing Checklist
 
-Use this checklist to track your progress during manual end-to-end verification of the **Supplier Commitment Control Center**. All check items map directly to detailed test cases in the [Manual Business Testing Guide](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/docs/manual-business-testing-guide.md).
+Use this checklist to track your progress during manual end-to-end verification of the **Supplier Commitment Control Center**. All check items map directly to detailed test cases in the [Manual Business Testing Guide](./docs/manual-business-testing-guide.md).
 
 ---
 

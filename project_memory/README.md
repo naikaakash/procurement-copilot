@@ -11,7 +11,7 @@
 | Item | Value |
 |---|---|
 | Project | `buyer-planner-action-workbench` (Claude version) |
-| Base project | `C:\Users\Aalok\Desktop\AI Projects\Procurement 3 Agent project\buyer-planner-action-workbench` |
+| Base project | `C:\Users\Aakash\Desktop\AI Projects\Procurement 3 Agent project\buyer-planner-action-workbench` |
 | Claude version | `buyer-planner-action-workbench-claude` (sibling folder — DO NOT touch base project) |
 | Stack | Next.js 16 · React 19 · TypeScript 5 · CSV data layer |
 | Last known state | Phases 1 + 2 complete. Phase 2E (Buyer Productivity) in progress. |

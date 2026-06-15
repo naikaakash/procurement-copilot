@@ -207,7 +207,7 @@ export function createAction(input: ProcurementActionInput): ProcurementAction {
     updatedBy: createdBy,
     updatedAt: now,
     version: 1,
-    sourceSystem: 'SIDEKICK',
+    sourceSystem: 'APP',
     sapSyncStatus: 'APP_ONLY',
   };
 

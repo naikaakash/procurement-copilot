@@ -1,6 +1,6 @@
 # 📊 PO Test Data Coverage Matrix
 
-This matrix maps each Purchase Order (PO) and Line Item in our mock database ([/data/mock-po-data.json](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/data/mock-po-data.json)) to the specific test scenario it covers, its expected dashboard impact, exception flags, and email reminder eligibility.
+This matrix maps each Purchase Order (PO) and Line Item in our mock database ([/data/mock-po-data.json](./data/mock-po-data.json)) to the specific test scenario it covers, its expected dashboard impact, exception flags, and email reminder eligibility.
 
 | PO Number | Line No | Scenario Covered | Expected Dashboard Cards Impacted | Expected Exception Flags | Reminder Eligible? | Reason |
 | :--- | :--- | :--- | :--- | :--- | :---: | :--- |

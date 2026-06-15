@@ -1336,7 +1336,7 @@ export default function RecommendationWorklist() {
                           <input
                             type="text"
                             data-testid="recommendation-email-cc-input"
-                            placeholder="Ex: buyer.cc@aalok.com"
+                            placeholder="Ex: buyer.cc@example.com"
                             value={emailCc}
                             onChange={(e) => setEmailCc(e.target.value)}
                             style={{

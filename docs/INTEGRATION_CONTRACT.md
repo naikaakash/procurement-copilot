@@ -1,7 +1,7 @@
-# Integration Contract — Aalok Sidekick
+# Integration Contract — Procurement Copilot
 ## Release 1: Supplier Commitment Core
 
-This document defines the architecture contract for how Aalok Sidekick loads procurement data.
+This document defines the architecture contract for how Procurement Copilot loads procurement data.
 It governs all teams and AI sessions working on this project.
 
 ---
@@ -122,7 +122,7 @@ These fields must never be modified by the app. The app reads them only.
 | Confirmed Delivery Date | `supplier_acknowledgements.csv` `committed_delivery_date` | Supplier portal / `EKES` |
 | Official PO Status | `purchase_order_headers.csv` `header_status` | `EKKO-LOEKZ` / lifecycle |
 
-### App-Owned Data (Managed by Aalok Sidekick)
+### App-Owned Data (Managed by Procurement Copilot)
 These fields are created and maintained by the application. They have no ERP equivalent.
 
 | Field | Current Storage | Future Storage |
