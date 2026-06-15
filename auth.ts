@@ -28,6 +28,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [MicrosoftEntraID],
   session: { strategy: "jwt" },
   trustHost: true,
+  debug: true,
   callbacks: {
     async jwt({ token, profile }) {
       if (profile) {
