@@ -63,11 +63,11 @@
 
 html, body {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   background-color: var(--bg-main);
   color: var(--text-primary);
   font-family: var(--font-family-body);
-  overflow-y: auto;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -360,13 +360,18 @@ h1, h2, h3, h4, .title-font {
   color: var(--status-resolved-text);
 }
 
-/* Control Tower Main Layout & Sidebar */
+/* Control Tower Main Layout & Sidebar
+ * App-shell pattern: the outer container fills exactly the viewport and
+ * hides its own overflow. The sidebar is a fixed-width flex child; the
+ * main panel is the ONLY scroll surface. This is why the sidebar stays
+ * pinned: the page itself never scrolls, only .main-content does.
+ */
 .app-container {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
   width: 100vw;
   background-color: var(--bg-main);
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -375,10 +380,7 @@ h1, h2, h3, h4, .title-font {
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  position: sticky;
-  top: 0;
-  align-self: flex-start;
+  height: 100%;
   z-index: 50;
   flex-shrink: 0;
   transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);

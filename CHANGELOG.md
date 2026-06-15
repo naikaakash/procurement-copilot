@@ -11,7 +11,20 @@ The format roughly follows [Keep a Changelog](https://keepachangelog.com/en/1.1.
 
 ## [Unreleased]
 
-_Open work appears here until tagged._
+### Fixed
+- **Sidebar still scrolled with the page** even after the v3.1 fix because
+  the layout had two competing scroll surfaces (`body` AND
+  `.main-content` both had `overflow-y: auto`). Switched to the standard
+  app-shell pattern: `html`/`body` are exactly viewport-sized with
+  `overflow: hidden`, `.app-container` is exactly `100vh` with `overflow:
+  hidden`, and `.main-content` is the only scroll surface. The sidebar
+  is now naturally pinned because the page itself can no longer scroll.
+  No more `position: sticky` band-aid.
+- **`copilot-setup-steps.yml` failed on every run** because it was
+  installing .NET 9 and `dotnet restore`-ing a SapAssistant.sln that no
+  longer exists. Rewrote it for the actual stack: Node 20 + `npm ci` +
+  `npm run build` + Playwright Chromium. Cloud-agent envs now warm up
+  cleanly in ~2 min instead of failing at step 5.
 
 ---
 

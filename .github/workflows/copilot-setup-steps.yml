@@ -1,15 +1,18 @@
 name: "Copilot Setup Steps"
 
-# This workflow preinstalls everything the GitHub Copilot cloud agent needs
-# BEFORE it starts working on an issue/PR. Without this, the agent would
-# discover dependencies by trial and error, which is slow and unreliable.
+# Preinstalls everything the GitHub Copilot cloud agent needs BEFORE it
+# starts working on an issue/PR. Without this, the agent would discover
+# dependencies by trial and error, which is slow and unreliable.
 #
-# The agent picks up this file automatically once it's on the default branch.
-# It's named exactly `copilot-setup-steps.yml`, lives in .github/workflows/,
-# and contains exactly one job called `copilot-setup-steps`.
+# The agent picks up this file automatically once it's on the default
+# branch. It must be named exactly `copilot-setup-steps.yml`, live in
+# `.github/workflows/`, and contain exactly one job called
+# `copilot-setup-steps`.
+#
+# Stack: Next.js 16 (TypeScript) + Playwright E2E. No .NET, no SPA
+# subproject — everything lives at the repo root.
 
 on:
-  # Auto-validate the setup steps whenever they change.
   workflow_dispatch:
   push:
     paths:
@@ -25,51 +28,35 @@ jobs:
     timeout-minutes: 15
 
     permissions:
-      # actions/checkout needs this.
       contents: read
 
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Set up .NET 9
-        uses: actions/setup-dotnet@v5
-        with:
-          dotnet-version: '9.0.x'
-
-      - name: Set up Node.js 24
+      - name: Set up Node.js 20
         uses: actions/setup-node@v5
         with:
-          node-version: '24'
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Restore .NET dependencies
-        run: dotnet restore SapAssistant.sln
-
-      - name: Build .NET (Release, no restore)
-        # Warm the build cache so the agent's first dotnet build is fast.
-        run: dotnet build SapAssistant.sln --no-restore --configuration Release
-
-      - name: Install SPA dependencies
-        working-directory: src/SapAssistant.Web
+      - name: Install dependencies
         run: npm ci --no-audit --no-fund
 
-      - name: Build SPA
-        # Warm the Vite cache + verify SPA still compiles.
-        working-directory: src/SapAssistant.Web
+      - name: Build Next.js (warm cache, verify typecheck + lint)
         run: npm run build
-
-      - name: Install Playwright E2E dependencies
-        working-directory: tests/e2e
-        run: npm ci --no-audit --no-fund
+        env:
+          # Build-time placeholders so middleware/auth typechecks pass.
+          # Real values come from Container App env at runtime.
+          AUTH_SECRET: build-time-placeholder-not-used
+          AUTH_TRUST_HOST: 'true'
 
       - name: Install Playwright browsers (Chromium + system deps)
-        working-directory: tests/e2e
         run: npx playwright install --with-deps chromium
 
       - name: Print agent-ready summary
         run: |
           echo "::group::Toolchain"
-          dotnet --info | head -n 20
           node --version
           npm --version
           npx playwright --version
@@ -77,4 +64,7 @@ jobs:
           echo ""
           echo "Agent environment is ready."
           echo "Conventions: .github/copilot-instructions.md"
-          echo "Prompt files: .github/prompts/"
+          echo "Run the app:        npm run dev"
+          echo "Build:              npm run build"
+          echo "Run E2E suite:      npm run test:e2e"
+          echo "Seed mock SQL:      npm run seed:sql  (needs SQL_CONNECTION_STRING)"
