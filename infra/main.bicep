@@ -33,6 +33,9 @@ param containerImage string = 'mcr.microsoft.com/k8se/quickstart:latest'
 @description('Daily ingestion cap (GB) for Log Analytics to protect cost.')
 param logAnalyticsDailyCapGb int = 1
 
+@description('Entra ID tenant authority for the issuer URL. Use "common" for multi-tenant/MSA apps, or a specific tenant GUID for single-tenant apps. Default matches the existing Entra app (signInAudience=AzureADandPersonalMicrosoftAccount).')
+param entraTenantId string = 'common'
+
 // -----------------------------------------------------------------------------
 // Naming
 // -----------------------------------------------------------------------------
@@ -122,24 +125,46 @@ resource app 'Microsoft.App/containerApps@2024-10-02-preview' = {
         transport: 'auto'
         allowInsecure: false
       }
+      secrets: [
+        {
+          name: 'auth-secret'
+          keyVaultUrl: '${kv.properties.vaultUri}secrets/AUTH-SECRET'
+          identity: uami.id
+        }
+        {
+          name: 'entra-client-id'
+          keyVaultUrl: '${kv.properties.vaultUri}secrets/OAuth-Microsoft-ClientId'
+          identity: uami.id
+        }
+        {
+          name: 'entra-client-secret'
+          keyVaultUrl: '${kv.properties.vaultUri}secrets/OAuth-Microsoft-ClientSecret'
+          identity: uami.id
+        }
+      ]
     }
     template: {
       containers: [
         {
-          name: 'api'
+          name: 'web'
           image: containerImage
           resources: {
             cpu: json('0.5')
             memory: '1Gi'
           }
           env: [
-            { name: 'ASPNETCORE_ENVIRONMENT',  value: 'Production' }
-            { name: 'ASPNETCORE_URLS',         value: 'http://+:8080' }
-            { name: 'KeyVault__Name',          value: keyVaultName }
-            { name: 'FrontendBaseUrl',         value: '/' }
-            { name: 'AZURE_CLIENT_ID',         value: uami.properties.clientId }
+            { name: 'NODE_ENV',                       value: 'production' }
+            { name: 'PORT',                           value: '8080' }
+            { name: 'HOSTNAME',                       value: '0.0.0.0' }
+            { name: 'AUTH_TRUST_HOST',                value: 'true' }
+            { name: 'AUTH_URL',                       value: 'https://${appResourceName}.${env.properties.defaultDomain}' }
+            { name: 'AUTH_MICROSOFT_ENTRA_ID_ISSUER', value: 'https://login.microsoftonline.com/${entraTenantId}/v2.0' }
+            { name: 'AUTH_SECRET',                    secretRef: 'auth-secret' }
+            { name: 'AUTH_MICROSOFT_ENTRA_ID_ID',     secretRef: 'entra-client-id' }
+            { name: 'AUTH_MICROSOFT_ENTRA_ID_SECRET', secretRef: 'entra-client-secret' }
+            { name: 'AZURE_CLIENT_ID',                value: uami.properties.clientId }
             { name: 'APPLICATIONINSIGHTS_CONNECTION_STRING', value: appi.properties.ConnectionString }
-            { name: 'OTEL_EXPORTER_OTLP_ENDPOINT', value: 'https://${appi.properties.AppId}.in.applicationinsights.azure.com/' }
+            { name: 'NEXT_TELEMETRY_DISABLED',        value: '1' }
           ]
         }
       ]

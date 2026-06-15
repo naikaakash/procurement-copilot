@@ -1,14 +1,31 @@
-# Buyer/Planner Action Workbench
+# SAP Assistant — Buyer/Planner Action Workbench
 
 > [!IMPORTANT]
-> **Feature freeze is active.** Before implementing any new feature, read [/docs/project-governance-feature-freeze.md](file:///c:/Users/Aalok/Desktop/AI%20Projects/Procurement%203%20Agent%20project/buyer-planner-action-workbench/docs/project-governance-feature-freeze.md).
+> **Feature freeze is active.** Before implementing any new feature, read [/docs/project-governance-feature-freeze.md](docs/project-governance-feature-freeze.md).
 
 An enterprise-grade supply chain control tower workbench. Designed for buyers and planners to immediately monitor and expedite overdue purchase order lines, manage supplier delay exposure, and mitigate inventory stock risks across all manufacturing plants.
 
+**Stack:** Next.js 16 (App Router, Turbopack) · React 19 · TypeScript 5 · Auth.js v5 (Microsoft Entra ID) · deployed on Azure Container Apps via GitHub Actions + OIDC federation.
 
----
+## Deployment
 
-## 🚀 Getting Started
+- **Production URL:** https://sapassistant-app.victoriousplant-c4f6558d.eastus2.azurecontainerapps.io
+- **Auth:** Microsoft Entra ID (multi-tenant + MSA). Callback: `/api/auth/callback/microsoft-entra-id`.
+- **Secrets:** Stored in Azure Key Vault `sapassistantkv01`, mounted into the Container App as env vars via the user-assigned managed identity `sapassistant-uami`.
+- **CI/CD:** Push to `main` triggers `.github/workflows/deploy.yml` → builds the image to GHCR → `az deployment group create` rolls infra + image atomically → smoke-tests `/api/health`.
+- **Infra:** Single Bicep file at `infra/main.bicep` provisions UAMI, Log Analytics, App Insights, Container Apps Environment, and the Container App itself.
+
+Required env vars (all sourced from KV at runtime):
+
+| Env var | KV secret |
+|---|---|
+| `AUTH_SECRET` | `AUTH-SECRET` |
+| `AUTH_MICROSOFT_ENTRA_ID_ID` | `OAuth-Microsoft-ClientId` |
+| `AUTH_MICROSOFT_ENTRA_ID_SECRET` | `OAuth-Microsoft-ClientSecret` |
+| `AUTH_MICROSOFT_ENTRA_ID_ISSUER` | _hardcoded_ `https://login.microsoftonline.com/common/v2.0` |
+| `AUTH_URL` | _derived from Container App FQDN_ |
+
+## Local development
 
 ### 1. Install Dependencies
 Ensure you have [Node.js](https://nodejs.org/) installed, then run:

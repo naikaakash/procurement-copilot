@@ -4,8 +4,21 @@ on:
   push:
     branches: [main]
     paths:
+      - 'app/**'
       - 'src/**'
+      - 'public/**'
+      - 'data/**'
+      - 'procurement_data_sample/**'
+      - 'procurement_data_sample_original/**'
+      - 'project_memory/**'
+      - 'auth.ts'
+      - 'proxy.ts'
+      - 'next.config.ts'
+      - 'package.json'
+      - 'package-lock.json'
       - 'Dockerfile'
+      - '.dockerignore'
+      - 'infra/**'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -64,14 +77,56 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Update Container App image
+      - name: Deploy infra + roll Container App to new image
         uses: azure/cli@v2
         with:
           inlineScript: |
-            az containerapp update \
+            az deployment group create \
               --resource-group "$AZURE_RG" \
-              --name        "$CONTAINER_APP" \
-              --image       "${IMAGE}:${{ steps.tag.outputs.value }}" \
-              --query "properties.configuration.ingress.fqdn" -o tsv \
-              | tee fqdn.txt
-            echo "Deployed: https://$(cat fqdn.txt)"
+              --template-file infra/main.bicep \
+              --parameters containerImage="${IMAGE}:${{ steps.tag.outputs.value }}" \
+              --query "properties.outputs.containerAppUrl.value" -o tsv \
+              | tee deployed-url.txt
+            echo "Deployed: $(cat deployed-url.txt)"
+
+      - name: Wait for new revision to become healthy
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            for i in $(seq 1 24); do
+              status=$(az containerapp revision list \
+                --name "$CONTAINER_APP" \
+                --resource-group "$AZURE_RG" \
+                --query "[?properties.active].{name:name,health:properties.healthState,running:properties.runningState}" -o json \
+                | tee /tmp/rev.json)
+              if echo "$status" | grep -q '"health": "Healthy"'; then
+                echo "✓ Healthy revision detected"
+                cat /tmp/rev.json
+                exit 0
+              fi
+              echo "Attempt $i: waiting 5s for healthy revision..."
+              sleep 5
+            done
+            echo "✗ Revision did not become healthy in 2 minutes"
+            cat /tmp/rev.json
+            exit 1
+
+      - name: Smoke test
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            URL=$(az containerapp show -g "$AZURE_RG" -n "$CONTAINER_APP" --query "properties.configuration.ingress.fqdn" -o tsv)
+            echo "Hitting https://$URL/api/health"
+            for i in $(seq 1 12); do
+              code=$(curl -s -o /tmp/body -w "%{http_code}" "https://$URL/api/health" || echo "000")
+              if [ "$code" = "200" ]; then
+                echo "✓ /api/health 200"
+                cat /tmp/body
+                exit 0
+              fi
+              echo "Attempt $i: got $code, retrying..."
+              sleep 5
+            done
+            echo "✗ /api/health never returned 200"
+            cat /tmp/body
+            exit 1
