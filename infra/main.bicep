@@ -37,7 +37,7 @@ param logAnalyticsDailyCapGb int = 1
 param entraTenantId string = 'common'
 
 @description('Comma-separated allowlist of emails / UPNs permitted to sign in. Checked in Auth.js `signIn` callback against profile.email, profile.preferred_username, and user.email (case-insensitive). Empty = open (NOT recommended in prod).')
-param authAllowedEmails string = 'aakash_a_naik@yahoo.com,naikaalok@gmail.com'
+param authAllowedEmails string = 'aakash_a_naik@yahoo.com,naikaalok@gmail.com,naikaalok1@gmail.com'
 
 @description('Data source for the procurement app. "sql" reads/writes Azure SQL; "csv" falls back to bundled CSV + local JSON files.')
 @allowed([ 'sql', 'csv' ])

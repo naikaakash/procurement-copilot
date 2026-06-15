@@ -26,8 +26,9 @@ The format roughly follows [Keep a Changelog](https://keepachangelog.com/en/1.1.
   and verifies the image is preserved post-deploy.
 
 ### Changed
-- Auth allowlist now includes `naikaalok@gmail.com` in addition to
-  `aakash_a_naik@yahoo.com`. Set via `authAllowedEmails` Bicep param.
+- Auth allowlist now includes `naikaalok@gmail.com` and
+  `naikaalok1@gmail.com` in addition to `aakash_a_naik@yahoo.com`. Set
+  via `authAllowedEmails` Bicep param.
 
 ---
 
