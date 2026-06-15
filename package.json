@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "seed:sql": "node scripts/seed-sql.js",
     "test:e2e": "node scratch/generate-mock-json.js && node scripts/seed-mock-data.js && node scratch/calculate-metrics.js && node scratch/regression-qa.js && playwright test",
     "qa:full": "node scratch/generate-mock-json.js && node scripts/seed-mock-data.js && node scratch/calculate-metrics.js && node scratch/regression-qa.js && npm run build && playwright test"
   },
   "dependencies": {
     "csvtojson": "^2.0.14",
+    "mssql": "^12.5.5",
     "next": "16.2.6",
     "next-auth": "^5.0.0-beta.31",
     "react": "19.2.4",
