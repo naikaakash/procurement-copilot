@@ -11,7 +11,9 @@ The format roughly follows [Keep a Changelog](https://keepachangelog.com/en/1.1.
 
 ## [Unreleased]
 
-_Add new entries here as you ship._
+### Changed
+- Auth allowlist now includes `naikaalok@gmail.com` in addition to
+  `aakash_a_naik@yahoo.com`. Set via `authAllowedEmails` Bicep param.
 
 ---
 
