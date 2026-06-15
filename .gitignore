@@ -1,96 +1,41 @@
-# ---------------------------------------------------------------------------
-# .NET
-# ---------------------------------------------------------------------------
-[Bb]in/
-[Oo]bj/
-[Oo]ut/
-[Bb]uild/
-[Pp]ublish/
-# SPA build output is copied here at build time (Dockerfile + E2E prepare step).
-# Never check it in.
-src/SapAssistant.Api/wwwroot/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-.vs/
-*.swp
-*.tmp
-*.log
-*.bak
-*.pdb
-*.cache
-project.lock.json
-project.fragment.lock.json
-artifacts/
-TestResults/
-*.coverage
-*.coveragexml
-coverage.json
-coverage*.xml
-*.trx
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Rider / ReSharper
-_ReSharper*/
-.idea/
-*.DotSettings.user
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# Visual Studio Code (workspace-local only; check in shared settings)
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
-!.vscode/launch.json
-!.vscode/tasks.json
-!.vscode/mcp.json
+# testing
+/coverage
 
-# ---------------------------------------------------------------------------
-# Node / Vite / React
-# ---------------------------------------------------------------------------
-node_modules/
-dist/
-dist-ssr/
-*.local
-.vite/
+# next.js
+/.next/
+/out/
 
-# Logs
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
+.pnpm-debug.log*
 
-# ---------------------------------------------------------------------------
-# Secrets — NEVER commit
-# ---------------------------------------------------------------------------
-appsettings.*.Local.json
-*.local.env
-.env
-.env.*
-!.env.example
-secrets.json
-*.pfx
-*.p12
-*.key
-*.pem
+# env files (can opt-in for committing if needed)
+.env*
 
-# Azure
-*.PublishSettings
-.azure/
+# vercel
+.vercel
 
-# ---------------------------------------------------------------------------
-# OS
-# ---------------------------------------------------------------------------
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# ---------------------------------------------------------------------------
-# Test outputs
-# ---------------------------------------------------------------------------
-playwright-report/
-playwright/.cache/
-test-results/
-
-# ---------------------------------------------------------------------------
-# Misc
-# ---------------------------------------------------------------------------
+# typescript
 *.tsbuildinfo
+next-env.d.ts

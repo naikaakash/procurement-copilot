@@ -1,0 +1,4 @@
+snapshot_id,snapshot_date,material_id,plant,demand_qty,available_stock_qty,open_po_qty,shortage_qty,ctb_pct,risk_bucket,time_horizon_days
+SNP_001,2026-05-28,M100001,PL01,100,120,50,0,100.0,YELLOW,30
+SNP_002,2026-05-28,M100002,PL01,500,450,100,0,100.0,YELLOW,30
+SNP_003,2026-05-28,M100003,PL02,120,90,20,10,91.6,RED,15

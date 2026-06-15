@@ -1,0 +1,1 @@
+message_id,po_number,item_number,supplier_id,direction,subject,body,sent_date,received_date,sentiment,extracted_commit_date,extracted_qty,source_system

@@ -1,0 +1,94 @@
+contact_id,supplier_id,contact_name,email,role,primary_flag
+C1000011,S100001,Alex Wong,alex.s100001@supplier-demo.com,Account Manager,Y
+C1000012,S100001,Mei Kumar,mei.s100001@supplier-demo.com,Planner,N
+C1000013,S100001,Alex Garcia,alex.s100001@supplier-demo.com,Account Manager,N
+C1000021,S100002,Anika Patel,anika.s100002@supplier-demo.com,Account Manager,Y
+C1000031,S100003,Luis Smith,luis.s100003@supplier-demo.com,Account Manager,Y
+C1000041,S100004,Anika Chen,anika.s100004@supplier-demo.com,Planner,Y
+C1000051,S100005,Mei Kumar,mei.s100005@supplier-demo.com,Account Manager,Y
+C1000052,S100005,Anika Garcia,anika.s100005@supplier-demo.com,Planner,N
+C1000061,S100006,Alex Patel,alex.s100006@supplier-demo.com,Customer Service,Y
+C1000071,S100007,Victor Smith,victor.s100007@supplier-demo.com,Planner,Y
+C1000072,S100007,Priya Smith,priya.s100007@supplier-demo.com,Account Manager,N
+C1000073,S100007,Daniel Kumar,daniel.s100007@supplier-demo.com,Sales,N
+C1000081,S100008,Victor Lee,victor.s100008@supplier-demo.com,Planner,Y
+C1000091,S100009,Victor Garcia,victor.s100009@supplier-demo.com,Customer Service,Y
+C1000101,S100010,Sara Kumar,sara.s100010@supplier-demo.com,Account Manager,Y
+C1000102,S100010,Priya Wong,priya.s100010@supplier-demo.com,Customer Service,N
+C1000111,S100011,Anika Wong,anika.s100011@supplier-demo.com,Customer Service,Y
+C1000112,S100011,Emily Kumar,emily.s100011@supplier-demo.com,Customer Service,N
+C1000121,S100012,Priya Lee,priya.s100012@supplier-demo.com,Account Manager,Y
+C1000122,S100012,Sara Patel,sara.s100012@supplier-demo.com,Customer Service,N
+C1000123,S100012,Mei Wong,mei.s100012@supplier-demo.com,Account Manager,N
+C1000131,S100013,Daniel Chen,daniel.s100013@supplier-demo.com,Account Manager,Y
+C1000141,S100014,Victor Kumar,victor.s100014@supplier-demo.com,Customer Service,Y
+C1000142,S100014,Mei Smith,mei.s100014@supplier-demo.com,Customer Service,N
+C1000143,S100014,Alex Lee,alex.s100014@supplier-demo.com,Planner,N
+C1000151,S100015,Priya Wong,priya.s100015@supplier-demo.com,Sales,Y
+C1000152,S100015,Emily Patel,emily.s100015@supplier-demo.com,Account Manager,N
+C1000161,S100016,Emily Patel,emily.s100016@supplier-demo.com,Sales,Y
+C1000162,S100016,Victor Wong,victor.s100016@supplier-demo.com,Planner,N
+C1000163,S100016,Daniel Miller,daniel.s100016@supplier-demo.com,Sales,N
+C1000171,S100017,Victor Garcia,victor.s100017@supplier-demo.com,Planner,Y
+C1000181,S100018,John Lee,john.s100018@supplier-demo.com,Sales,Y
+C1000182,S100018,Sara Garcia,sara.s100018@supplier-demo.com,Planner,N
+C1000191,S100019,Sara Lee,sara.s100019@supplier-demo.com,Planner,Y
+C1000192,S100019,Mei Wong,mei.s100019@supplier-demo.com,Sales,N
+C1000201,S100020,Daniel Miller,daniel.s100020@supplier-demo.com,Account Manager,Y
+C1000211,S100021,Mei Chen,mei.s100021@supplier-demo.com,Planner,Y
+C1000212,S100021,John Patel,john.s100021@supplier-demo.com,Planner,N
+C1000213,S100021,Sara Chen,sara.s100021@supplier-demo.com,Planner,N
+C1000221,S100022,Luis Patel,luis.s100022@supplier-demo.com,Account Manager,Y
+C1000222,S100022,Emily Wong,emily.s100022@supplier-demo.com,Planner,N
+C1000231,S100023,John Smith,john.s100023@supplier-demo.com,Account Manager,Y
+C1000241,S100024,John Smith,john.s100024@supplier-demo.com,Customer Service,Y
+C1000251,S100025,John Wong,john.s100025@supplier-demo.com,Customer Service,Y
+C1000261,S100026,Luis Kumar,luis.s100026@supplier-demo.com,Account Manager,Y
+C1000262,S100026,Mei Garcia,mei.s100026@supplier-demo.com,Sales,N
+C1000263,S100026,Priya Chen,priya.s100026@supplier-demo.com,Customer Service,N
+C1000271,S100027,Emily Chen,emily.s100027@supplier-demo.com,Account Manager,Y
+C1000272,S100027,Daniel Kumar,daniel.s100027@supplier-demo.com,Account Manager,N
+C1000281,S100028,Victor Patel,victor.s100028@supplier-demo.com,Customer Service,Y
+C1000282,S100028,Daniel Wong,daniel.s100028@supplier-demo.com,Account Manager,N
+C1000291,S100029,Emily Chen,emily.s100029@supplier-demo.com,Account Manager,Y
+C1000301,S100030,Anika Wong,anika.s100030@supplier-demo.com,Planner,Y
+C1000311,S100031,Alex Patel,alex.s100031@supplier-demo.com,Account Manager,Y
+C1000312,S100031,Daniel Kumar,daniel.s100031@supplier-demo.com,Customer Service,N
+C1000313,S100031,Alex Smith,alex.s100031@supplier-demo.com,Account Manager,N
+C1000321,S100032,Alex Miller,alex.s100032@supplier-demo.com,Customer Service,Y
+C1000322,S100032,Priya Lee,priya.s100032@supplier-demo.com,Sales,N
+C1000323,S100032,Mei Wong,mei.s100032@supplier-demo.com,Sales,N
+C1000331,S100033,John Patel,john.s100033@supplier-demo.com,Sales,Y
+C1000341,S100034,Priya Lee,priya.s100034@supplier-demo.com,Planner,Y
+C1000342,S100034,Victor Chen,victor.s100034@supplier-demo.com,Planner,N
+C1000343,S100034,Priya Miller,priya.s100034@supplier-demo.com,Sales,N
+C1000351,S100035,Anika Kumar,anika.s100035@supplier-demo.com,Account Manager,Y
+C1000352,S100035,Emily Smith,emily.s100035@supplier-demo.com,Planner,N
+C1000353,S100035,Mei Patel,mei.s100035@supplier-demo.com,Planner,N
+C1000361,S100036,John Smith,john.s100036@supplier-demo.com,Sales,Y
+C1000362,S100036,Victor Wong,victor.s100036@supplier-demo.com,Sales,N
+C1000371,S100037,Sara Kumar,sara.s100037@supplier-demo.com,Planner,Y
+C1000372,S100037,Luis Miller,luis.s100037@supplier-demo.com,Planner,N
+C1000373,S100037,Anika Smith,anika.s100037@supplier-demo.com,Planner,N
+C1000381,S100038,Victor Smith,victor.s100038@supplier-demo.com,Sales,Y
+C1000382,S100038,Mei Smith,mei.s100038@supplier-demo.com,Customer Service,N
+C1000383,S100038,Sara Garcia,sara.s100038@supplier-demo.com,Planner,N
+C1000391,S100039,Alex Smith,alex.s100039@supplier-demo.com,Account Manager,Y
+C1000401,S100040,Priya Chen,priya.s100040@supplier-demo.com,Customer Service,Y
+C1000411,S100041,Mei Smith,mei.s100041@supplier-demo.com,Sales,Y
+C1000421,S100042,Anika Patel,anika.s100042@supplier-demo.com,Customer Service,Y
+C1000422,S100042,John Wong,john.s100042@supplier-demo.com,Account Manager,N
+C1000423,S100042,Priya Wong,priya.s100042@supplier-demo.com,Customer Service,N
+C1000431,S100043,Anika Patel,anika.s100043@supplier-demo.com,Sales,Y
+C1000432,S100043,Luis Miller,luis.s100043@supplier-demo.com,Planner,N
+C1000441,S100044,Emily Chen,emily.s100044@supplier-demo.com,Account Manager,Y
+C1000451,S100045,Sara Smith,sara.s100045@supplier-demo.com,Planner,Y
+C1000461,S100046,Anika Lee,anika.s100046@supplier-demo.com,Customer Service,Y
+C1000462,S100046,John Garcia,john.s100046@supplier-demo.com,Planner,N
+C1000471,S100047,Daniel Kumar,daniel.s100047@supplier-demo.com,Planner,Y
+C1000481,S100048,Priya Smith,priya.s100048@supplier-demo.com,Account Manager,Y
+C1000491,S100049,Mei Wong,mei.s100049@supplier-demo.com,Account Manager,Y
+C1000492,S100049,Mei Chen,mei.s100049@supplier-demo.com,Sales,N
+C1000501,S100050,Sara Patel,sara.s100050@supplier-demo.com,Account Manager,Y
+C1000502,S100050,Priya Kumar,priya.s100050@supplier-demo.com,Sales,N
+C1000503,S100050,Daniel Chen,daniel.s100050@supplier-demo.com,Customer Service,N

@@ -1,0 +1,502 @@
+[
+  {
+    "timestamp": "2026-06-03T00:55:05.731Z",
+    "type": "STATE_CHANGE",
+    "message": "Supervisor status: STANDBY."
+  },
+  {
+    "timestamp": "2026-06-03T00:55:00.304Z",
+    "type": "ANOMALY_RESOLVED",
+    "message": "Anomaly ANOM_SHORT_DAL1_M500017 resolved."
+  },
+  {
+    "timestamp": "2026-06-03T00:54:44.747Z",
+    "type": "STATE_CHANGE",
+    "message": "Supervisor status: ACTIVE. Scanning cycle set to 300 seconds."
+  },
+  {
+    "timestamp": "2026-06-03T00:46:56.183Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 01:04:20. Discovered 0 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-03T00:46:56.049Z",
+    "type": "SCAN_START",
+    "message": "Supervisor initiating active scanning of network nodes..."
+  },
+  {
+    "timestamp": "2026-06-03T00:41:56.166Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 00:59:20. Discovered 0 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-03T00:41:56.039Z",
+    "type": "SCAN_START",
+    "message": "Supervisor initiating active scanning of network nodes..."
+  },
+  {
+    "timestamp": "2026-06-03T00:36:56.166Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 00:54:20. Discovered 0 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-03T00:36:56.039Z",
+    "type": "SCAN_START",
+    "message": "Supervisor initiating active scanning of network nodes..."
+  },
+  {
+    "timestamp": "2026-06-03T00:31:56.169Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 00:49:20. Discovered 0 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-03T00:31:56.030Z",
+    "type": "SCAN_START",
+    "message": "Supervisor initiating active scanning of network nodes..."
+  },
+  {
+    "timestamp": "2026-06-03T00:26:56.194Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 00:44:20. Discovered 0 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-03T00:26:56.022Z",
+    "type": "SCAN_START",
+    "message": "Supervisor initiating active scanning of network nodes..."
+  },
+  {
+    "timestamp": "2026-06-03T00:21:56.156Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 00:39:20. Discovered 0 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-03T00:21:56.006Z",
+    "type": "SCAN_START",
+    "message": "Supervisor initiating active scanning of network nodes..."
+  },
+  {
+    "timestamp": "2026-06-03T00:16:56.222Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 00:34:20. Discovered 0 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-03T00:16:56.003Z",
+    "type": "SCAN_START",
+    "message": "Supervisor initiating active scanning of network nodes..."
+  },
+  {
+    "timestamp": "2026-06-03T00:05:25.219Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 00:22:49. Discovered 0 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-03T00:05:24.966Z",
+    "type": "SCAN_START",
+    "message": "Supervisor initiating active scanning of network nodes..."
+  },
+  {
+    "timestamp": "2026-06-02T23:53:30.256Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 00:10:54. Discovered 0 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-02T23:53:29.998Z",
+    "type": "SCAN_START",
+    "message": "Supervisor initiating active scanning of network nodes..."
+  },
+  {
+    "timestamp": "2026-06-02T23:47:39.234Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 00:05:03. Discovered 0 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-02T23:47:38.182Z",
+    "type": "SCAN_START",
+    "message": "Supervisor initiating active scanning of network nodes..."
+  },
+  {
+    "timestamp": "2026-06-02T23:43:18.017Z",
+    "type": "ANOMALY_RESOLVED",
+    "message": "Anomaly ANOM_SHORT_DAL1_M500017 resolved."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.226Z",
+    "type": "SCAN_COMPLETE",
+    "message": "Supervisor scan finished. Uptime: 00:00:19. Discovered 1608 new anomalies."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.216Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Supply acknowledgement missing for PO 4500000215 line 00060 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.212Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nexus Global acknowledgement missing for PO 4500000210 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.210Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Helio Materials acknowledgement missing for PO 4500000009 line 00060 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.208Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Helio Materials acknowledgement missing for PO 4500000009 line 00050 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.206Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nova Materials 35 acknowledgement missing for PO 4500000428 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.204Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nova Materials 35 acknowledgement missing for PO 4500000428 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.201Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Summit Systems acknowledgement missing for PO 4500000385 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.198Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Helio Manufacturing acknowledgement missing for PO 4500000255 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.196Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Sterling Supply 28 acknowledgement missing for PO 4500000063 line 00040 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.194Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier BlueRock Supply acknowledgement missing for PO 4500000190 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.192Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier BlueRock Supply acknowledgement missing for PO 4500000112 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.189Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Sterling Systems acknowledgement missing for PO 4500000164 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.187Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Pioneer Systems acknowledgement missing for PO 4500000132 line 00050 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.184Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Pioneer Systems acknowledgement missing for PO 4500000132 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.181Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Helio Materials acknowledgement missing for PO 4500000092 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.179Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nova Systems acknowledgement missing for PO 4500000191 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.177Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Sterling Supply 28 acknowledgement missing for PO 4500000296 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.174Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Supply acknowledgement missing for PO 4500000040 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.172Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Apex Electronics acknowledgement missing for PO 4500000103 line 00060 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.170Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Apex Materials acknowledgement missing for PO 4500000071 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.168Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Apex Electronics acknowledgement missing for PO 4500000260 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.165Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Apex Electronics acknowledgement missing for PO 4500000260 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.162Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Apex Electronics acknowledgement missing for PO 4500000260 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.160Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Vector Precision 42 acknowledgement missing for PO 4500000435 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.158Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Helio Components 49 acknowledgement missing for PO 4500000427 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.156Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Sterling Global acknowledgement missing for PO 4500000322 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.153Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nexus Global acknowledgement missing for PO 4500000250 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.151Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nexus Global acknowledgement missing for PO 4500000250 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.148Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Sterling Global acknowledgement missing for PO 4500000083 line 00060 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.146Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Sterling Global acknowledgement missing for PO 4500000083 line 00040 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.143Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Vector Precision acknowledgement missing for PO 4500000417 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.141Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nova Precision acknowledgement missing for PO 4500000269 line 00050 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.139Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nova Electronics acknowledgement missing for PO 4500000159 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.136Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nova Electronics acknowledgement missing for PO 4500000159 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.134Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Sterling Precision acknowledgement missing for PO 4500000070 line 00050 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.131Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Helio Manufacturing acknowledgement missing for PO 4500000450 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.129Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nexus Manufacturing acknowledgement missing for PO 4500000300 line 00070 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.126Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nexus Manufacturing acknowledgement missing for PO 4500000300 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.124Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Apex Precision acknowledgement missing for PO 4500000239 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.122Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Global acknowledgement missing for PO 4500000137 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.120Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Manufacturing acknowledgement missing for PO 4500000085 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.117Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Vector Global acknowledgement missing for PO 4500000440 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.114Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nexus Manufacturing acknowledgement missing for PO 4500000372 line 00040 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.112Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Vector Precision acknowledgement missing for PO 4500000222 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.110Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Sterling Supply 28 acknowledgement missing for PO 4500000491 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.107Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Apex Electronics acknowledgement missing for PO 4500000359 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.105Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Vertex Manufacturing acknowledgement missing for PO 4500000404 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.103Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Manufacturing acknowledgement missing for PO 4500000293 line 00050 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.100Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Helio Industries acknowledgement missing for PO 4500000276 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.097Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Pioneer Global acknowledgement missing for PO 4500000198 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.095Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Pioneer Global acknowledgement missing for PO 4500000198 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.091Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Supply acknowledgement missing for PO 4500000465 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.089Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Vertex Global acknowledgement missing for PO 4500000426 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.087Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier BlueRock Supply acknowledgement missing for PO 4500000090 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.085Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Global acknowledgement missing for PO 4500000415 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.082Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Summit Systems acknowledgement missing for PO 4500000402 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.079Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Vector Global acknowledgement missing for PO 4500000397 line 00070 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.077Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Vector Global acknowledgement missing for PO 4500000397 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.074Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Global acknowledgement missing for PO 4500000028 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.072Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Supply 16 acknowledgement missing for PO 4500000478 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.070Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Supply 16 acknowledgement missing for PO 4500000478 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.068Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Omni Supply acknowledgement missing for PO 4500000336 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.065Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Supply acknowledgement missing for PO 4500000325 line 00040 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.062Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Vector Manufacturing acknowledgement missing for PO 4500000242 line 00040 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.059Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Apex Components acknowledgement missing for PO 4500000188 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.057Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Summit Systems acknowledgement missing for PO 4500000463 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.055Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nova Manufacturing 38 acknowledgement missing for PO 4500000055 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.053Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier BlueRock Supply acknowledgement missing for PO 4500000330 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.051Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Vector Precision acknowledgement missing for PO 4500000262 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.046Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Zenith Industries acknowledgement missing for PO 4500000058 line 00020 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.044Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Summit Materials acknowledgement missing for PO 4500000002 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.042Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Supply 16 acknowledgement missing for PO 4500000256 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.040Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Nexus Manufacturing acknowledgement missing for PO 4500000258 line 00010 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.038Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Quantum Supply acknowledgement missing for PO 4500000454 line 00030 past SLA window."
+  },
+  {
+    "timestamp": "2026-06-02T23:42:55.036Z",
+    "type": "ALERT_GEN",
+    "message": "[CONFIRMATION DELAY] Supplier Apex Systems acknowledgement missing for PO 4500000001 line 00030 past SLA window."
+  }
+]

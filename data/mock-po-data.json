@@ -1,0 +1,4021 @@
+[
+  {
+    "po_number": "4500002001",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-01",
+          "TC-OP-08",
+          "TC-GR-01",
+          "TC-IV-01"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 2.5,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-08"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-08"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 500,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002002",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "PARTIALLY_RECEIVED",
+        "invoiced_quantity": 80,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PARTIAL",
+        "invoice_status": "PARTIAL",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-02",
+          "TC-GR-02",
+          "TC-IV-02",
+          "TC-AK-02"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 150,
+                "confirmed_date": "2026-05-12",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-10",
+                "qty": 50,
+                "material_doc": "5000002002"
+              },
+              {
+                "posting_date": "2026-06-20",
+                "qty": 30,
+                "material_doc": "5001002002"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 2.5,
+        "po_status": "PARTIALLY_RECEIVED",
+        "invoiced_quantity": 100,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PARTIAL",
+        "invoice_status": "PARTIAL",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-02"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 400,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-25",
+                "qty": 100
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "PARTIALLY_RECEIVED",
+        "invoiced_quantity": 200,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PARTIAL",
+        "invoice_status": "PARTIAL",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-25",
+                "qty": 200
+              }
+            ]
+          },
+          {
+            "schedule_line": "0002",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 500,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-25",
+                "qty": 100
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002003",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "FULLY_RECEIVED",
+        "invoiced_quantity": 150,
+        "deletion_completion_indicator": "COMPLETED",
+        "gr_status": "COMPLETED",
+        "invoice_status": "COMPLETED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-03",
+          "TC-OV-04",
+          "TC-OV-07",
+          "TC-GR-03",
+          "TC-IV-03"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-15",
+            "scheduled_qty": 150,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 150,
+                "confirmed_date": "2026-04-17",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-05-15",
+                "qty": 150
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002004",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "Overdue open quantity with high line value",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-01",
+          "TC-OV-10",
+          "TC-EM-05"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-20",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 2.5,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Overdue open quantity",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-01"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-20",
+            "scheduled_qty": 500,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Overdue open quantity",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-01"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-20",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002005",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "FUTURE_DELIVERY",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-03"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-07-15",
+            "scheduled_qty": 300,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 2.5,
+        "po_status": "FUTURE_DELIVERY",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-03"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-07-15",
+            "scheduled_qty": 600,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "FUTURE_DELIVERY",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-07-15",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002006",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "MISSING_ACKNOWLEDGEMENT",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Acknowledgement required but missing after 14 days",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-AK-01",
+          "TC-EM-04"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 2.5,
+        "po_status": "MISSING_ACKNOWLEDGEMENT",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Acknowledgement required but missing after 14 days",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-AK-01"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "MISSING_ACKNOWLEDGEMENT",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Acknowledgement required but missing after 14 days",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-AK-01"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002007",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "LATE_ACKNOWLEDGEMENT",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-AK-04"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-12",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 200,
+                "confirmed_date": "2026-06-15",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002008",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "REMINDER_SENT",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "Overdue and reminder already sent once",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10",
+          "TC-EM-03"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-02",
+            "scheduled_qty": 400,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": "2026-06-04",
+            "reminder_count": 1,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 2.5,
+        "po_status": "REMINDER_SENT",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Overdue and reminder already sent once",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-EM-03"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-02",
+            "scheduled_qty": 800,
+            "acknowledgement_required": "N",
+            "last_reminder_date": "2026-06-04",
+            "reminder_count": 1,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002009",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "REMINDER_ELIGIBLE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Overdue PO line eligible for supplier email reminder",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10",
+          "TC-EM-01"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-08",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002010",
+    "supplier": "Global Foundry (VEND-002)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 25,
+        "po_status": "HIGH_VALUE_MISSING_ACK",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "CRITICAL",
+        "exception_reason": "High-value open order (>50K USD) missing acknowledgement",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-AK-05",
+          "TC-EM-07",
+          "TC-EM-08",
+          "TC-EM-09",
+          "TC-EM-10",
+          "TC-EM-11"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-07-20",
+            "scheduled_qty": 5000,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 25,
+        "po_status": "HIGH_VALUE_MISSING_ACK",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "High-value open order missing acknowledgement",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-AK-05"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-07-20",
+            "scheduled_qty": 2000,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 25,
+        "po_status": "HIGH_VALUE_MISSING_ACK",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "High-value open order missing acknowledgement",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-AK-05"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-07-20",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002011",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-AK-03"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-AK-03"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 500,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002012",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "INVOICE_BLOCKED",
+        "invoiced_quantity": 500,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "COMPLETED",
+        "invoice_status": "INVOICED_BLOCKED",
+        "invoice_blocked_flag": "Y",
+        "price_variance": 1250,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Invoice price variance detected; blocked in AP",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-09",
+          "TC-OV-07",
+          "TC-IV-04",
+          "TC-IV-07"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-10",
+            "scheduled_qty": 500,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-05-10",
+                "qty": 500
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 2.5,
+        "po_status": "INVOICE_BLOCKED",
+        "invoiced_quantity": 1000,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "COMPLETED",
+        "invoice_status": "INVOICED_BLOCKED",
+        "invoice_blocked_flag": "Y",
+        "price_variance": 250,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Invoice price variance detected; blocked in AP",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-IV-04"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-10",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-05-10",
+                "qty": 1000
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "INVOICE_BLOCKED",
+        "invoiced_quantity": 500,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "COMPLETED",
+        "invoice_status": "INVOICED_BLOCKED",
+        "invoice_blocked_flag": "Y",
+        "price_variance": 15,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Invoice price variance detected; blocked in AP",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-10",
+            "scheduled_qty": 500,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-05-10",
+                "qty": 500
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002013",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "GR_DONE_INVOICE_MISSING",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "COMPLETED",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Goods received fully but invoice is missing",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-IV-05"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-01",
+            "scheduled_qty": 250,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 250,
+                "confirmed_date": "2026-05-03",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-01",
+                "qty": 250
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002014",
+    "supplier": "Global Foundry (VEND-002)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 25,
+        "po_status": "INVOICE_BEFORE_GR",
+        "invoiced_quantity": 1000,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "INVOICED",
+        "invoice_blocked_flag": "Y",
+        "price_variance": 0,
+        "quantity_variance": 1000,
+        "risk_category": "HIGH",
+        "exception_reason": "Invoice received before Goods Receipt (GR/IR mismatch)",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-IV-06",
+          "TC-IV-08"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-30",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 1000,
+                "confirmed_date": "2026-05-18",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002015",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "DELETED",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "DELETED",
+        "gr_status": "CANCELLED",
+        "invoice_status": "CANCELLED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "NONE",
+        "exception_reason": "Line item deleted/cancelled in ERP",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-04",
+          "TC-OV-05",
+          "TC-EM-02"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002016",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "CLOSED",
+        "invoiced_quantity": 500,
+        "deletion_completion_indicator": "COMPLETED",
+        "gr_status": "COMPLETED",
+        "invoice_status": "COMPLETED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "NONE",
+        "exception_reason": "Closed / Fully received and invoiced",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-05",
+          "TC-EM-02"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-10",
+            "scheduled_qty": 500,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 500,
+                "confirmed_date": "2026-04-12",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-05-10",
+                "qty": 500
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002017",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Potential duplicate order of PO 4500002001",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-DQ-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002018",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "Invalid delivery date value 'INVALID_DATE'",
+        "data_quality_flag": "Y",
+        "test_scenarios": [
+          "TC-OV-10",
+          "TC-DQ-01",
+          "TC-DQ-07"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "INVALID_DATE",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002019",
+    "supplier": "Consulting Group (VEND-003)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "EU01",
+    "purchasing_organization": "PO02",
+    "po_creation_date": "2026-05-10",
+    "currency": "EUR",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "ERP Implementation Consulting Services",
+        "plant": "PL03",
+        "unit_price": 75000,
+        "po_status": "SERVICE_PO_OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-07",
+          "TC-IV-09"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-30",
+            "scheduled_qty": 1,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "ERP implementation Support Services",
+        "plant": "PL03",
+        "unit_price": 1500,
+        "po_status": "SERVICE_PO_OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-07"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-30",
+            "scheduled_qty": 10,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "ERP implementation Training Services",
+        "plant": "PL03",
+        "unit_price": 800,
+        "po_status": "SERVICE_PO_OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-30",
+            "scheduled_qty": 5,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00040",
+        "material_service_description": "ERP implementation Post-Go-Live Services",
+        "plant": "PL03",
+        "unit_price": 1000,
+        "po_status": "SERVICE_PO_OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-30",
+            "scheduled_qty": 10,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002020",
+    "supplier": "Consulting Group (VEND-003)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "EU01",
+    "purchasing_organization": "PO02",
+    "po_creation_date": "2026-05-10",
+    "currency": "EUR",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "System Upgrade Integration Test Services",
+        "plant": "PL03",
+        "unit_price": 45000,
+        "po_status": "OVERDUE_SERVICE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "Overdue service line (>45k EUR)",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10",
+          "TC-IV-09"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-15",
+            "scheduled_qty": 1,
+            "acknowledgement_required": "N",
+            "last_reminder_date": "2026-05-18",
+            "reminder_count": 1,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002021",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Multi-line PO - Line 10",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-01"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 150,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL02",
+        "unit_price": 0.15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Multi-line PO - Line 20",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-01"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 5000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 2.5,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-01"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 300,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00040",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-01"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 2000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002022",
+    "supplier": "Global Foundry (VEND-002)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 25,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "CRITICAL",
+        "exception_reason": "Overdue open quantity and high line value (>50k USD)",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-15",
+            "scheduled_qty": 3000,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 3000,
+                "confirmed_date": "2026-04-12",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 25,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "Overdue open quantity",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-15",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 1000,
+                "confirmed_date": "2026-05-20",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 25,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Overdue open quantity",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-15",
+            "scheduled_qty": 500,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 500,
+                "confirmed_date": "2026-04-12",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00040",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 25,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Overdue open quantity",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-15",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 200,
+                "confirmed_date": "2026-04-12",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002023",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OVERDUE_MISSING_ACK",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "Overdue PO line with missing supplier acknowledgement",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10",
+          "TC-AK-06"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-20",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002024",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OVERDUE_NO_GR",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Delivery date passed and no Goods Receipt (GR) entered",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10",
+          "TC-GR-06"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-01",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002025",
+    "supplier": "Consulting Group (VEND-003)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "EU01",
+    "purchasing_organization": "PO02",
+    "po_creation_date": "2026-05-10",
+    "currency": "EUR",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Cloud Migration System Analysis",
+        "plant": "PL03",
+        "unit_price": 60000,
+        "po_status": "INVOICE_BLOCKED_HIGH_VALUE",
+        "invoiced_quantity": 1,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "COMPLETED",
+        "invoice_status": "INVOICED_BLOCKED",
+        "invoice_blocked_flag": "Y",
+        "price_variance": 5000,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "High-value invoice blocked (>50k EUR) due to price discrepancy",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-IV-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-04-30",
+            "scheduled_qty": 1,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-04-30",
+                "qty": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002026",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "Repeated supplier delay (>25 days overdue and 3 reminders sent)",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-15",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": "2026-05-20",
+            "reminder_count": 3,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 100,
+                "confirmed_date": "2026-04-18",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 2.5,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Repeated supplier delay",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-15",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "N",
+            "last_reminder_date": "2026-05-20",
+            "reminder_count": 3,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "Resistor Pack 10k",
+        "plant": "PL01",
+        "unit_price": 0.15,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Repeated supplier delay",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-15",
+            "scheduled_qty": 1000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": "2026-05-20",
+            "reminder_count": 3,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002027",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "DELETED",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "DELETED",
+        "gr_status": "CANCELLED",
+        "invoice_status": "CANCELLED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "NONE",
+        "exception_reason": "Cancelled line item should be excluded from active risk tracking",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OP-06",
+          "TC-OV-05",
+          "TC-DQ-14"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-01",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002028",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OVER_RECEIVED",
+        "invoiced_quantity": 120,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "COMPLETED",
+        "invoice_status": "COMPLETED",
+        "invoice_blocked_flag": "Y",
+        "price_variance": 0,
+        "quantity_variance": -20,
+        "risk_category": "HIGH",
+        "exception_reason": "Received quantity (120) is greater than ordered quantity (100)",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-GR-04",
+          "TC-GR-07",
+          "TC-DQ-09",
+          "TC-DQ-15"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-30",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 100,
+                "confirmed_date": "2026-05-03",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-05-30",
+                "qty": 120
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002029",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "INVALID_QUANTITY",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "Ordered quantity has negative value (-50)",
+        "data_quality_flag": "Y",
+        "test_scenarios": [
+          "TC-OP-10",
+          "TC-DQ-08"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-10",
+            "scheduled_qty": -50,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002030",
+    "supplier": null,
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "MISSING_SUPPLIER_MASTER",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "CRITICAL",
+        "exception_reason": "Supplier vendor ID is missing / null in purchase order item",
+        "data_quality_flag": "Y",
+        "test_scenarios": [
+          "TC-DQ-02"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-10",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002031",
+    "supplier": "Consulting Group (VEND-003)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "EU01",
+    "purchasing_organization": "PO02",
+    "po_creation_date": "2026-05-10",
+    "currency": "EUR",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "ERP Implementation Consulting Services",
+        "plant": "PL03",
+        "unit_price": 60000,
+        "po_status": "SERVICE_PO_OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 1,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "ERP implementation Support Services",
+        "plant": "PL03",
+        "unit_price": 1200,
+        "po_status": "SERVICE_PO_OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 5,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "ERP implementation Training Services",
+        "plant": "PL03",
+        "unit_price": 800,
+        "po_status": "SERVICE_PO_OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 5,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002032",
+    "supplier": "Consulting Group (VEND-003)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "EU01",
+    "purchasing_organization": "PO02",
+    "po_creation_date": "2026-05-10",
+    "currency": "EUR",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Cloud Migration System Analysis",
+        "plant": "PL03",
+        "unit_price": 500,
+        "po_status": "PARTIALLY_RECEIVED",
+        "invoiced_quantity": 40,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PARTIAL",
+        "invoice_status": "PARTIAL",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-25",
+                "qty": 40
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002033",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 1500,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-15",
+            "scheduled_qty": 1,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002034",
+    "supplier": "Global Foundry (VEND-002)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 5,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-07-20",
+            "scheduled_qty": 100000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 5,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-07-20",
+            "scheduled_qty": 50000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 5,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-07-20",
+            "scheduled_qty": 20000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00040",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 5,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-07-20",
+            "scheduled_qty": 10000,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002035",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "John Senior (BUY-03)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 10,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Overdue open quantity by 5 days",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-05",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002036",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "John Senior (BUY-03)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 12,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "Overdue open quantity by 11 days",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-30",
+            "scheduled_qty": 150,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002037",
+    "supplier": "Global Foundry (VEND-002)",
+    "buyer": "Michael Lead (BUY-04)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 20,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "HIGH",
+        "exception_reason": "Overdue open quantity by 21 days",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-20",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002038",
+    "supplier": "Global Foundry (VEND-002)",
+    "buyer": "Michael Lead (BUY-04)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "ASIC Transceiver Chip",
+        "plant": "PL02",
+        "unit_price": 22,
+        "po_status": "OVERDUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "CRITICAL",
+        "exception_reason": "Overdue open quantity by 40 days",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-OV-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-01",
+            "scheduled_qty": 300,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002039",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Missing delivery date value",
+        "data_quality_flag": "Y",
+        "test_scenarios": [
+          "TC-DQ-04"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": null,
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002040",
+    "supplier": "Apex Components (VEND-004)",
+    "buyer": "John Senior (BUY-03)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 8,
+        "po_status": "FULLY_RECEIVED",
+        "invoiced_quantity": 500,
+        "deletion_completion_indicator": "COMPLETED",
+        "gr_status": "COMPLETED",
+        "invoice_status": "COMPLETED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-GR-05"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-15",
+            "scheduled_qty": 500,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-15",
+                "qty": 500
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 8,
+        "po_status": "FULLY_RECEIVED",
+        "invoiced_quantity": 200,
+        "deletion_completion_indicator": "COMPLETED",
+        "gr_status": "COMPLETED",
+        "invoice_status": "COMPLETED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-15",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-15",
+                "qty": 200
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 8,
+        "po_status": "FULLY_RECEIVED",
+        "invoiced_quantity": 100,
+        "deletion_completion_indicator": "COMPLETED",
+        "gr_status": "COMPLETED",
+        "invoice_status": "COMPLETED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-15",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-15",
+                "qty": 100
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002041",
+    "supplier": "Apex Components (VEND-004)",
+    "buyer": "John Senior (BUY-03)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 8,
+        "po_status": "FULLY_RECEIVED",
+        "invoiced_quantity": 500,
+        "deletion_completion_indicator": "COMPLETED",
+        "gr_status": "COMPLETED",
+        "invoice_status": "COMPLETED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-GR-05"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-25",
+            "scheduled_qty": 500,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-05-25",
+                "qty": 500
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002042",
+    "supplier": "Apex Components (VEND-004)",
+    "buyer": "John Senior (BUY-03)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 10,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Received quantity is missing/null",
+        "data_quality_flag": "Y",
+        "test_scenarios": [
+          "TC-DQ-06"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002043",
+    "supplier": "Apex Components (VEND-004)",
+    "buyer": "John Senior (BUY-03)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 10,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Ordered quantity is zero",
+        "data_quality_flag": "Y",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 0,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002044",
+    "supplier": "Apex Components (VEND-004)",
+    "buyer": "John Senior (BUY-03)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 10,
+        "po_status": "GR_DONE_INVOICE_MISSING",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "COMPLETED",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Goods received fully but invoice is missing",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-IV-05"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-01",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-01",
+                "qty": 100
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 10,
+        "po_status": "GR_DONE_INVOICE_MISSING",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "COMPLETED",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Goods received fully but invoice is missing",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-01",
+            "scheduled_qty": 200,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-01",
+                "qty": 200
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002045",
+    "supplier": "Apex Components (VEND-004)",
+    "buyer": "John Senior (BUY-03)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 10,
+        "po_status": "INVOICE_BLOCKED",
+        "invoiced_quantity": 100,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "COMPLETED",
+        "invoice_status": "INVOICED_BLOCKED",
+        "invoice_blocked_flag": "Y",
+        "price_variance": 500,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "Invoice value exceeds PO value",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-IV-10"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-01",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-01",
+                "qty": 100
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002046",
+    "supplier": "Apex Components (VEND-004)",
+    "buyer": "John Senior (BUY-03)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "PCB Board Double Sided",
+        "plant": "PL01",
+        "unit_price": 10,
+        "po_status": "INVOICE_BLOCKED",
+        "invoiced_quantity": 100,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PARTIAL",
+        "invoice_status": "INVOICED_BLOCKED",
+        "invoice_blocked_flag": "Y",
+        "price_variance": 0,
+        "quantity_variance": -50,
+        "risk_category": "LOW",
+        "exception_reason": "Invoiced quantity (100) exceeds received quantity (50)",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-IV-08"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-01",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-06-01",
+                "qty": 50
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002047",
+    "supplier": "Consulting Group (VEND-003)",
+    "buyer": "Sarah Planner (BUY-02)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "EUR",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Cloud Migration System Analysis",
+        "plant": "PL03",
+        "unit_price": 1000,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "PO currency (EUR) differs from company code currency (USD)",
+        "data_quality_flag": "Y",
+        "test_scenarios": [
+          "TC-IV-09"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 10,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002048",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "CLOSED",
+        "invoiced_quantity": 100,
+        "deletion_completion_indicator": "COMPLETED",
+        "gr_status": "COMPLETED",
+        "invoice_status": "COMPLETED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-IV-08"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-10",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-05-10",
+                "qty": 100
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002049",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-AK-02"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 100,
+                "confirmed_date": "2026-05-12",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002050",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "Y",
+            "last_reminder_date": "2026-06-04",
+            "reminder_count": 1,
+            "acknowledgements": [
+              {
+                "confirmed_qty": 100,
+                "confirmed_date": "2026-06-06",
+                "response_source": "EMAIL"
+              }
+            ],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002051",
+    "supplier": "Nova Systems (VEND-005)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Supplier email address is missing",
+        "data_quality_flag": "Y",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002052",
+    "supplier": "Vector Logistics (VEND-006)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Supplier email address has invalid format",
+        "data_quality_flag": "Y",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002053",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "DELETED",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "DELETED",
+        "gr_status": "CANCELLED",
+        "invoice_status": "CANCELLED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-EM-02"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002054",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "CLOSED",
+        "invoiced_quantity": 100,
+        "deletion_completion_indicator": "COMPLETED",
+        "gr_status": "COMPLETED",
+        "invoice_status": "COMPLETED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [
+          "TC-EM-02"
+        ],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-10",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-05-10",
+                "qty": 100
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002055",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "REMINDER_SENT",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Overdue open quantity",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-02",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": "2026-05-30",
+            "reminder_count": 1,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002056",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00020",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "CLOSED",
+        "invoiced_quantity": 100,
+        "deletion_completion_indicator": "COMPLETED",
+        "gr_status": "COMPLETED",
+        "invoice_status": "COMPLETED",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-05-10",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": [
+              {
+                "posting_date": "2026-05-10",
+                "qty": 100
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "item_number": "00030",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "DELETED",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "DELETED",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      },
+      {
+        "item_number": "00040",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "OPEN",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "LOW",
+        "exception_reason": "None",
+        "data_quality_flag": "N",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 50,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002057",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": null,
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Buyer ID is missing",
+        "data_quality_flag": "Y",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002058",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": null,
+        "unit_price": 15,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Plant code is missing",
+        "data_quality_flag": "Y",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002059",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": null,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Unit price is missing/null",
+        "data_quality_flag": "Y",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "po_number": "4500002060",
+    "supplier": "Sterling Electronics (VEND-001)",
+    "buyer": "Alex Buyer (BUY-01)",
+    "company_code": "US01",
+    "purchasing_organization": "PO01",
+    "po_creation_date": "2026-05-10",
+    "currency": "USD",
+    "items": [
+      {
+        "item_number": "00010",
+        "material_service_description": "Microprocessor Core v1",
+        "plant": "PL01",
+        "unit_price": 15,
+        "po_status": "DATA_QUALITY_ISSUE",
+        "invoiced_quantity": 0,
+        "deletion_completion_indicator": "ACTIVE_OPEN",
+        "gr_status": "PENDING",
+        "invoice_status": "PENDING",
+        "invoice_blocked_flag": "N",
+        "price_variance": 0,
+        "quantity_variance": 0,
+        "risk_category": "MEDIUM",
+        "exception_reason": "Currency is missing/null",
+        "data_quality_flag": "Y",
+        "test_scenarios": [],
+        "schedule_lines": [
+          {
+            "schedule_line": "0001",
+            "delivery_date": "2026-06-25",
+            "scheduled_qty": 100,
+            "acknowledgement_required": "N",
+            "last_reminder_date": null,
+            "reminder_count": 0,
+            "acknowledgements": [],
+            "goods_receipts": []
+          }
+        ]
+      }
+    ]
+  }
+]

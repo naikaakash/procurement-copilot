@@ -1,0 +1,7 @@
+contact_id,supplier_id,contact_name,email,role,primary_flag
+CON01,VEND-001,Alice Sterling,alice@sterlingelectronics.com,Sales Manager,Y
+CON02,VEND-002,Bob Foundry,bob@globalfoundry.com,Account Director,Y
+CON03,VEND-003,Clara Consulting,clara@consultinggroup.com,Sales Manager,Y
+CON04,VEND-004,David Apex,david@apexcomponents.com,Sales Manager,Y
+CON05,VEND-005,Nova Representative,,Inside Sales,Y
+CON06,VEND-006,Vector Agent,vector_logistics_email_at_invalid,Logistics Lead,Y

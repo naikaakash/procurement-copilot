@@ -1,0 +1,5 @@
+{
+  "isActive": false,
+  "scanIntervalSeconds": 300,
+  "alertThresholdValue": 5000
+}

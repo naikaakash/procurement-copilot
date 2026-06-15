@@ -1,0 +1,7 @@
+supplier_id,business_partner_id,supplier_name,country,region,payment_terms,incoterms,supplier_tier,risk_score,avg_response_days,on_time_delivery_pct,quality_ppm,created_on,blocked_flag
+VEND-001,BP200001,Sterling Electronics,US,TX,NET30,FCA,STRATEGIC,38,4.4,80,658,2023-05-29,N
+VEND-002,BP200002,Global Foundry,US,CA,NET60,FOB,STRATEGIC,61,7.4,98,1934,2024-11-24,N
+VEND-003,BP200003,Consulting Group,DE,Berlin,NET30,FCA,STRATEGIC,15,2.0,95,0,2025-01-01,N
+VEND-004,BP200004,Apex Components,US,CA,NET30,FCA,PREFERRED,45,3.5,92,200,2024-01-15,N
+VEND-005,BP200005,Nova Systems,US,TX,NET30,FCA,PREFERRED,50,4.0,88,400,2024-02-15,N
+VEND-006,BP200006,Vector Logistics,DE,Berlin,NET30,FCA,PREFERRED,55,4.5,85,500,2024-03-15,N

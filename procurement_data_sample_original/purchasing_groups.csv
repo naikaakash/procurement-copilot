@@ -1,0 +1,5 @@
+purchasing_group,purchasing_group_name,buyer_email
+B01,Electronics Buyers,b01_buyer@orion-demo.com
+B02,Mechanical Buyers,b02_buyer@orion-demo.com
+B03,Packaging Buyers,b03_buyer@orion-demo.com
+B04,MRO Buyers,b04_buyer@orion-demo.com

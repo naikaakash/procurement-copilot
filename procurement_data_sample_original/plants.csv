@@ -1,0 +1,6 @@
+plant,plant_name,city,region,country,timezone
+AUS1,Austin Final Assembly,Austin,TX,US,America/Chicago
+DAL1,Dallas Distribution,Dallas,TX,US,America/Chicago
+PHX1,Phoenix Electronics,Phoenix,AZ,US,America/Chicago
+KCH1,Kitchener Assembly,Kitchener,ON,CA,America/Toronto
+MTY1,Monterrey Assembly,Monterrey,NL,MX,America/Mexico_City

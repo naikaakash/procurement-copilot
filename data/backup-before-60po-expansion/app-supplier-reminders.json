@@ -1,0 +1,21 @@
+[
+  {
+    "reminderId": "rem-2008",
+    "recommendationId": "rec-2008",
+    "purchaseOrderNumber": "4500002008",
+    "purchaseOrderItem": "00010",
+    "supplierId": "VEND-001",
+    "supplierName": "Sterling Electronics",
+    "supplierEmail": "alice@sterlingelectronics.com",
+    "channel": "EMAIL",
+    "reminderStatus": "SENT",
+    "subject": "Overdue PO 4500002008 Item 00010 Query",
+    "bodyText": "Please verify delivery recovery schedule.",
+    "sentAt": "2026-06-04T10:05:00.000Z",
+    "createdBy": "demo.seed",
+    "createdAt": "2026-06-04T10:00:00.000Z",
+    "updatedBy": "demo.seed",
+    "updatedAt": "2026-06-04T10:05:00.000Z",
+    "version": 1
+  }
+]
