@@ -360,6 +360,21 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
   const [copilotInput, setCopilotInput] = useState('');
   const [copilotLoading, setCopilotLoading] = useState(false);
 
+  const copilotChatEndRef = React.useRef<HTMLDivElement | null>(null);
+
+  const latestCopilotMessage = copilotMessages[copilotMessages.length - 1]?.content ?? '';
+
+  useEffect(() => {
+    const scrollTimer = window.setTimeout(() => {
+      copilotChatEndRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end'
+      });
+    }, 50);
+
+    return () => window.clearTimeout(scrollTimer);
+  }, [copilotMessages.length, latestCopilotMessage, copilotLoading]);
+
   // Phase 3B: AI Root Cause Analysis states
   const [aiRootCause, setAiRootCause] = useState<any | null>(null);
   const [aiRootCauseLoading, setAiRootCauseLoading] = useState(false);
@@ -8579,6 +8594,9 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                        <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Copilot is analyzing supply chain tables...</span>
                      </div>
                   )}
+
+                  {/* Bottom sentinel for Sourcing Copilot auto-scroll */}
+                  <div ref={copilotChatEndRef} aria-hidden="true" />
                 </div>
 
                 {/* Suggested Quick Queries */}
