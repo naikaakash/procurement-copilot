@@ -240,9 +240,9 @@ export default function BuyerPlannerWorkbench() {
   const [zoomLevel, setZoomLevel] = useState<number>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('user-zoom-level');
-      return saved ? parseFloat(saved) : 0.82;
+      return saved ? parseFloat(saved) : 1.00;
     }
-    return 0.82;
+    return 1.00;
   });
 
   useEffect(() => {
@@ -2170,7 +2170,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                 </span>
                 <button
                   type="button"
-                  onClick={() => setZoomLevel(0.82)}
+                  onClick={() => setZoomLevel(1.00)}
                   style={{
                     background: 'transparent',
                     border: 'none',
@@ -2181,7 +2181,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                     padding: 0,
                     fontWeight: 600
                   }}
-                  title="Reset to default 82% zoom"
+                  title="Reset to default 100% zoom"
                   className="sidebar-item-text"
                 >
                   Reset
@@ -2191,26 +2191,26 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', width: '100%' }}>
                 <button
                   type="button"
-                  onClick={() => setZoomLevel(z => Math.max(0.70, parseFloat((z - 0.03).toFixed(2))))}
-                  disabled={zoomLevel <= 0.70}
+                  onClick={() => setZoomLevel(z => Math.max(0.80, parseFloat((z - 0.03).toFixed(2))))}
+                  disabled={zoomLevel <= 0.80}
                   style={{
                     flex: 1,
-                    background: zoomLevel <= 0.70 ? 'rgba(255,255,255,0.01)' : 'rgba(255,255,255,0.03)',
+                    background: zoomLevel <= 0.80 ? 'rgba(255,255,255,0.01)' : 'rgba(255,255,255,0.03)',
                     border: '1px solid var(--border-color)',
-                    color: zoomLevel <= 0.70 ? 'var(--text-muted)' : 'var(--text-primary)',
+                    color: zoomLevel <= 0.80 ? 'var(--text-muted)' : 'var(--text-primary)',
                     fontSize: '0.8rem',
                     fontWeight: 'bold',
                     padding: '0.2rem 0.4rem',
                     borderRadius: '0.25rem',
-                    cursor: zoomLevel <= 0.70 ? 'not-allowed' : 'pointer',
+                    cursor: zoomLevel <= 0.80 ? 'not-allowed' : 'pointer',
                     transition: 'all 0.15s',
                     outline: 'none',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}
-                  onMouseEnter={e => { if (zoomLevel > 0.70) e.currentTarget.style.background = 'rgba(59, 130, 246, 0.08)'; }}
-                  onMouseLeave={e => { if (zoomLevel > 0.70) e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
+                  onMouseEnter={e => { if (zoomLevel > 0.80) e.currentTarget.style.background = 'rgba(59, 130, 246, 0.08)'; }}
+                  onMouseLeave={e => { if (zoomLevel > 0.80) e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
                   title="Zoom Out (Saves preference)"
                 >
                   －
@@ -2222,26 +2222,26 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
 
                 <button
                   type="button"
-                  onClick={() => setZoomLevel(z => Math.min(1.05, parseFloat((z + 0.03).toFixed(2))))}
-                  disabled={zoomLevel >= 1.05}
+                  onClick={() => setZoomLevel(z => Math.min(1.40, parseFloat((z + 0.03).toFixed(2))))}
+                  disabled={zoomLevel >= 1.40}
                   style={{
                     flex: 1,
-                    background: zoomLevel >= 1.05 ? 'rgba(255,255,255,0.01)' : 'rgba(255,255,255,0.03)',
+                    background: zoomLevel >= 1.40 ? 'rgba(255,255,255,0.01)' : 'rgba(255,255,255,0.03)',
                     border: '1px solid var(--border-color)',
-                    color: zoomLevel >= 1.05 ? 'var(--text-muted)' : 'var(--text-primary)',
+                    color: zoomLevel >= 1.40 ? 'var(--text-muted)' : 'var(--text-primary)',
                     fontSize: '0.8rem',
                     fontWeight: 'bold',
                     padding: '0.2rem 0.4rem',
                     borderRadius: '0.25rem',
-                    cursor: zoomLevel >= 1.05 ? 'not-allowed' : 'pointer',
+                    cursor: zoomLevel >= 1.40 ? 'not-allowed' : 'pointer',
                     transition: 'all 0.15s',
                     outline: 'none',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}
-                  onMouseEnter={e => { if (zoomLevel < 1.05) e.currentTarget.style.background = 'rgba(59, 130, 246, 0.08)'; }}
-                  onMouseLeave={e => { if (zoomLevel < 1.05) e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
+                  onMouseEnter={e => { if (zoomLevel < 1.40) e.currentTarget.style.background = 'rgba(59, 130, 246, 0.08)'; }}
+                  onMouseLeave={e => { if (zoomLevel < 1.40) e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
                   title="Zoom In (Saves preference)"
                 >
                   ＋

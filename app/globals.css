@@ -69,7 +69,11 @@ html, body {
   font-family: var(--font-family-body);
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
-  zoom: 0.82;
+  zoom: 1.00;
+}
+
+html {
+  font-size: 18px; /* Increased by 2px from standard 16px */
 }
 
 /* Custom Scrollbars */
