@@ -69,6 +69,7 @@ html, body {
   font-family: var(--font-family-body);
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
+  zoom: 0.82;
 }
 
 /* Custom Scrollbars */
@@ -368,8 +369,8 @@ h1, h2, h3, h4, .title-font {
  */
 .app-container {
   display: flex;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: var(--bg-main);
   overflow: hidden;
 }
@@ -430,7 +431,7 @@ h1, h2, h3, h4, .title-font {
   left: 0;
   top: 0;
   width: 60px;
-  height: 100vh;
+  height: 100%;
   z-index: 60;
   border-right: 1px solid var(--border-color);
   background-color: var(--bg-surface);

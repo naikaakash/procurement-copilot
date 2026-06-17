@@ -361,15 +361,31 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
   const [copilotLoading, setCopilotLoading] = useState(false);
 
   const copilotChatEndRef = React.useRef<HTMLDivElement | null>(null);
+  const latestUserMessageRef = React.useRef<HTMLDivElement | null>(null);
 
   const latestCopilotMessage = copilotMessages[copilotMessages.length - 1]?.content ?? '';
 
+  let lastUserMessageIndex = -1;
+  for (let i = copilotMessages.length - 1; i >= 0; i--) {
+    if (copilotMessages[i].role === 'user') {
+      lastUserMessageIndex = i;
+      break;
+    }
+  }
+
   useEffect(() => {
     const scrollTimer = window.setTimeout(() => {
-      copilotChatEndRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end'
-      });
+      if (latestUserMessageRef.current) {
+        latestUserMessageRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      } else {
+        copilotChatEndRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end'
+        });
+      }
     }, 50);
 
     return () => window.clearTimeout(scrollTimer);
@@ -3739,9 +3755,9 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                 <div style={{
                   position: 'fixed',
                   top: '1.25rem',
+                  bottom: '1.25rem',
                   right: selectedItemKey ? '1.25rem' : '-500px',
                   width: '450px',
-                  height: 'calc(100vh - 2.5rem)',
                   opacity: selectedItemKey ? 1 : 0,
                   transition: 'right 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s',
                   background: 'var(--bg-surface)',
@@ -8500,7 +8516,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
             <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '1.5rem', width: '100%', height: '100%' }} className="animate-fade">
               
               {/* LEFT SIDE: CHAT INTERFACE */}
-              <div className="widget-panel" style={{ height: 'calc(100vh - 170px)', minHeight: '450px', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div className="widget-panel" style={{ height: 'calc(100vh - 3rem)', minHeight: '450px', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 
                 {/* Tab Header */}
                 <div className="widget-header" style={{ paddingBottom: '0.85rem' }}>
@@ -8535,9 +8551,11 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                   }}>
                   {copilotMessages.map((msg, index) => {
                     const isAssistant = msg.role === 'assistant';
+                    const isLatestUser = index === lastUserMessageIndex;
                     return (
                       <div 
                         key={index} 
+                        ref={isLatestUser ? latestUserMessageRef : undefined}
                         data-testid="copilot-message-bubble"
                         style={{
                           alignSelf: isAssistant ? 'flex-start' : 'flex-end',
@@ -9645,8 +9663,8 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                     position: 'fixed',
                     top: 0,
                     left: 0,
-                    width: '100vw',
-                    height: '100vh',
+                    right: 0,
+                    bottom: 0,
                     background: 'rgba(0,0,0,0.3)',
                     backdropFilter: 'blur(3px)',
                     display: 'flex',
@@ -10099,9 +10117,9 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                 <div style={{
                   position: 'fixed',
                   top: '1.25rem',
+                  bottom: '1.25rem',
                   right: selectedAlert ? '1.25rem' : '-500px',
                   width: '450px',
-                  height: 'calc(100vh - 2.5rem)',
                   opacity: selectedAlert ? 1 : 0,
                   transition: 'right 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s',
                   background: 'var(--bg-surface)',
@@ -10959,8 +10977,8 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                     position: 'fixed',
                     top: 0,
                     left: 0,
-                    width: '100vw',
-                    height: '100vh',
+                    right: 0,
+                    bottom: 0,
                     background: 'rgba(0,0,0,0.4)',
                     backdropFilter: 'blur(3px)',
                     display: 'flex',
