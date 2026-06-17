@@ -8500,7 +8500,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem', width: '100%', alignItems: 'start' }} className="animate-fade">
               
               {/* LEFT SIDE: CHAT INTERFACE */}
-              <div className="widget-panel" style={{ minHeight: '650px', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div className="widget-panel" style={{ height: 'calc(100vh - 120px)', minHeight: '450px', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 
                 {/* Tab Header */}
                 <div className="widget-header" style={{ paddingBottom: '0.85rem' }}>
@@ -8524,7 +8524,6 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                   data-testid="copilot-chat-history"
                   style={{ 
                     flex: 1, 
-                    maxHeight: '440px', 
                     overflowY: 'auto', 
                     display: 'flex', 
                     flexDirection: 'column', 
@@ -8532,8 +8531,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                     padding: '1rem',
                     background: 'rgba(10, 14, 23, 0.3)',
                     borderRadius: '0.375rem',
-                    border: '1px solid var(--border-color)',
-                    minHeight: '350px'
+                    border: '1px solid var(--border-color)'
                   }}>
                   {copilotMessages.map((msg, index) => {
                     const isAssistant = msg.role === 'assistant';
