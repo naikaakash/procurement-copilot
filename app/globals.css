@@ -69,7 +69,7 @@ html, body {
   font-family: var(--font-family-body);
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
-  zoom: 1.00;
+  zoom: 0.88;
 }
 
 html {

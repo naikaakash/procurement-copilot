@@ -240,9 +240,9 @@ export default function BuyerPlannerWorkbench() {
   const [zoomLevel, setZoomLevel] = useState<number>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('user-zoom-level');
-      return saved ? parseFloat(saved) : 1.00;
+      return saved ? parseFloat(saved) : 0.88;
     }
-    return 1.00;
+    return 0.88;
   });
 
   useEffect(() => {
@@ -2170,7 +2170,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                 </span>
                 <button
                   type="button"
-                  onClick={() => setZoomLevel(1.00)}
+                  onClick={() => setZoomLevel(0.88)}
                   style={{
                     background: 'transparent',
                     border: 'none',
@@ -2181,7 +2181,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
                     padding: 0,
                     fontWeight: 600
                   }}
-                  title="Reset to default 100% zoom"
+                  title="Reset to default 88% zoom"
                   className="sidebar-item-text"
                 >
                   Reset
