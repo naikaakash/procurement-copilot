@@ -582,6 +582,81 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
     setSupplierPage(1);
   };
 
+  const scrollToCopilotTarget = (targetId: string) => {
+    const mainElement = document.querySelector('.main-content');
+    if (!mainElement) {
+      console.warn('Sourcing Copilot Scroll: .main-content scroll container not found');
+      return;
+    }
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const elementTop = targetElement.getBoundingClientRect().top - mainElement.getBoundingClientRect().top;
+      const headerOffset = 40; // Safe spacing to keep the target header fully visible below any layout edge
+      const targetScrollTop = mainElement.scrollTop + elementTop - headerOffset;
+      mainElement.scrollTo({
+        top: Math.max(0, targetScrollTop),
+        behavior: 'smooth'
+      });
+    } else {
+      // Fallback: scroll main content to top
+      mainElement.scrollTo({ top: 0, behavior: 'smooth' });
+      console.warn(`Sourcing Copilot Scroll: Target element #${targetId} not found in the DOM.`);
+    }
+  };
+
+  const handleCopilotAction = (actionUrl: string) => {
+    try {
+      console.log('Handling Copilot action:', actionUrl);
+      const url = actionUrl.replace(/^action:/, '');
+      
+      let target = url;
+      let poParams = null;
+      
+      if (url.startsWith('navigate?')) {
+        const query = url.split('?')[1] || '';
+        const params = new URLSearchParams(query);
+        target = params.get('target') || '';
+        const po = params.get('po');
+        const item = params.get('item');
+        const line = params.get('line');
+        if (po) {
+          poParams = { po, item: item || '00010', line: line || '0001' };
+        }
+      }
+      
+      const validTabs = [
+        'overview', 'overdue', 'acknowledgement', 'recommendations', 
+        'part', 'supplier-analytics', 'exception-analytics', 
+        'buyer-productivity', 'control-tower', 'copilot'
+      ];
+      
+      if (validTabs.includes(target)) {
+        setActiveTab(target as any);
+        
+        // Wait for the tab/view to render, then scroll to the specific section ID
+        setTimeout(() => {
+          const sectionId = `${target}-section`;
+          scrollToCopilotTarget(sectionId);
+          
+          if (poParams) {
+            setSelectedItemKey(poParams);
+          }
+        }, 150);
+      } else if (url.startsWith('view_po?')) {
+        const params = new URLSearchParams(url.split('?')[1]);
+        const po = params.get('po') || '';
+        const item = params.get('item') || '00010';
+        const line = params.get('line') || '0001';
+        
+        setSelectedItemKey({ po, item, line });
+      } else {
+        console.warn('Unknown Copilot action:', actionUrl);
+      }
+    } catch (e) {
+      console.warn('Failed to execute Copilot action:', e);
+    }
+  };
+
   // Reload detail helper
   const reloadDetail = async (poNumber: string, itemNumber: string, scheduleLine: string) => {
     try {
@@ -2180,7 +2255,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
             <>
               {/* TAB 1: EXECUTIVE PROCUREMENT DASHBOARD (HOMEPAGE) */}
               {activeTab === 'overview' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%' }}>
+            <div id="overview-section" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%' }}>
               
               {/* Overview Header */}
               <div className="animate-fade" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
@@ -2926,7 +3001,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
 
           {/* TAB 2: OVERDUE PURCHASE ORDER ACTION WORKBENCH (PHASE 1A CORRECTION & 1B WORKLIST) */}
           {activeTab === 'overdue' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
+            <div id="overdue-section" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
               
               {/* Overdue Header */}
               <div className="animate-fade" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -4780,7 +4855,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
 
           {/* TAB 3: SUPPLIER ACKNOWLEDGEMENT WORKBENCH (PHASE 1C) */}
           {activeTab === 'acknowledgement' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
+            <div id="acknowledgement-section" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
               
               {/* Acknowledgement Header */}
               <div className="animate-fade" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -5428,7 +5503,9 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
 
           {/* TAB 3.5: RECOMMENDATION WORKLIST (PHASE 8F) */}
           {activeTab === 'recommendations' && (
-            <RecommendationWorklist />
+            <div id="recommendations-section">
+              <RecommendationWorklist />
+            </div>
           )}
 
           {/* TAB 4: PART AVAILABILITY WORKBENCH (PHASE 1D) */}
@@ -8476,7 +8553,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
 
                         {/* Content */}
                         <div style={{ wordBreak: 'break-word' }}>
-                          {renderMarkdown(msg.content)}
+                          {renderMarkdown(msg.content, handleCopilotAction)}
                         </div>
 
                         {/* Sources Used Badge */}
@@ -11504,7 +11581,7 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
 }
 
 // Helper functions for custom Markdown rendering in Procurement Copilot (Phase 3A)
-const renderMarkdown = (text: string) => {
+const renderMarkdown = (text: string, onAction?: (action: string) => void) => {
   if (!text) return '';
   
   const lines = text.split('\n');
@@ -11554,7 +11631,7 @@ const renderMarkdown = (text: string) => {
               <tr style={{ borderBottom: '2px solid var(--border-color)', background: 'rgba(255,255,255,0.02)' }}>
                 {headers.map((h, idx) => (
                   <th key={idx} style={{ padding: '0.5rem 0.75rem', fontWeight: 700, textAlign: 'left', borderRight: '1px solid var(--border-color)', color: 'var(--text-primary)' }}>
-                    {parseBold(h)}
+                    {parseBold(h, onAction)}
                   </th>
                 ))}
               </tr>
@@ -11564,7 +11641,7 @@ const renderMarkdown = (text: string) => {
                 <tr key={rowIdx} style={{ borderBottom: '1px solid var(--border-color)', background: rowIdx % 2 === 1 ? 'rgba(255,255,255,0.01)' : 'transparent' }}>
                   {row.map((cell, cellIdx) => (
                     <td key={cellIdx} style={{ padding: '0.5rem 0.75rem', borderRight: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
-                      {parseBold(cell)}
+                      {parseBold(cell, onAction)}
                     </td>
                   ))}
                 </tr>
@@ -11578,21 +11655,21 @@ const renderMarkdown = (text: string) => {
       
       // Header check
       if (cleanLine.startsWith('### ')) {
-        elements.push(<h4 key={`h4-${i}`} style={{ color: 'var(--color-primary)', fontSize: '0.85rem', fontWeight: 700, margin: '0.75rem 0 0.35rem 0' }}>{cleanLine.replace('### ', '')}</h4>);
+        elements.push(<h4 key={`h4-${i}`} style={{ color: 'var(--color-primary)', fontSize: '0.85rem', fontWeight: 700, margin: '0.75rem 0 0.35rem 0' }}>{parseBold(cleanLine.replace('### ', ''), onAction)}</h4>);
       } else if (cleanLine.startsWith('## ')) {
-        elements.push(<h3 key={`h3-${i}`} style={{ color: 'var(--text-primary)', fontSize: '0.95rem', fontWeight: 700, margin: '1rem 0 0.5rem 0' }}>{cleanLine.replace('## ', '')}</h3>);
+        elements.push(<h3 key={`h3-${i}`} style={{ color: 'var(--text-primary)', fontSize: '0.95rem', fontWeight: 700, margin: '1rem 0 0.5rem 0' }}>{parseBold(cleanLine.replace('## ', ''), onAction)}</h3>);
       } else if (cleanLine.startsWith('# ')) {
-        elements.push(<h2 key={`h2-${i}`} style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: 800, margin: '1.25rem 0 0.75rem 0' }}>{cleanLine.replace('# ', '')}</h2>);
+        elements.push(<h2 key={`h2-${i}`} style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: 800, margin: '1.25rem 0 0.75rem 0' }}>{parseBold(cleanLine.replace('# ', ''), onAction)}</h2>);
       } else if (cleanLine.trim().startsWith('* ') || cleanLine.trim().startsWith('- ')) {
         const content = cleanLine.replace(/^[\s]*[\*\-]\s/, '');
         elements.push(
           <li key={`li-${i}`} style={{ marginLeft: '1rem', listStyleType: 'disc', fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>
-            {parseBold(content)}
+            {parseBold(content, onAction)}
           </li>
         );
       } else {
         if (cleanLine.trim() !== '') {
-          elements.push(<p key={`p-${i}`} style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', margin: '0.35rem 0', lineHeight: 1.4 }}>{parseBold(cleanLine)}</p>);
+          elements.push(<p key={`p-${i}`} style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', margin: '0.35rem 0', lineHeight: 1.4 }}>{parseBold(cleanLine, onAction)}</p>);
         } else {
           elements.push(<div key={`br-${i}`} style={{ height: '0.25rem' }} />);
         }
@@ -11603,13 +11680,57 @@ const renderMarkdown = (text: string) => {
   return <>{elements}</>;
 };
 
-const parseBold = (str: string) => {
+const parseBold = (str: string, onAction?: (action: string) => void) => {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = linkRegex.exec(str)) !== null) {
+    const textBefore = str.substring(lastIndex, match.index);
+    if (textBefore) {
+      parts.push(...parseBoldAndCodeOnly(textBefore));
+    }
+    const linkText = match[1];
+    const linkUrl = match[2];
+    
+    parts.push(
+      <a 
+        key={`link-${match.index}`} 
+        href={linkUrl}
+        onClick={(e) => {
+          if (linkUrl.startsWith('action:') && onAction) {
+            e.preventDefault();
+            onAction(linkUrl);
+          }
+        }}
+        style={{
+          color: '#60a5fa',
+          textDecoration: 'underline',
+          cursor: 'pointer',
+          fontWeight: 600
+        }}
+      >
+        {linkText}
+      </a>
+    );
+    lastIndex = linkRegex.lastIndex;
+  }
+
+  const textAfter = str.substring(lastIndex);
+  if (textAfter) {
+    parts.push(...parseBoldAndCodeOnly(textAfter));
+  }
+
+  return parts;
+};
+
+const parseBoldAndCodeOnly = (str: string) => {
   const parts = str.split('**');
   return parts.map((part, i) => {
     if (i % 2 === 1) {
       return <strong key={i} style={{ color: 'var(--text-primary)', fontWeight: 700 }}>{part}</strong>;
     }
-    // Handle inline code backticks within the segment
     const codeParts = part.split('`');
     if (codeParts.length > 1) {
       return codeParts.map((cp, j) => {
