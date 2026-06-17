@@ -69,7 +69,6 @@ html, body {
   font-family: var(--font-family-body);
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
-  zoom: 0.85;
 }
 
 /* Custom Scrollbars */
@@ -762,6 +761,9 @@ h1, h2, h3, h4, .title-font {
   padding: 1.5rem;
   gap: 1.5rem;
   overflow-y: auto;
+  zoom: 0.85;
+  width: calc(100% / 0.85);
+  height: calc(100% / 0.85);
 }
 
 /* Overview Layout & Widgets */

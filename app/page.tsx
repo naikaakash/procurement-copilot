@@ -8497,10 +8497,10 @@ How can I help you optimize your supply chain today? Feel free to ask me questio
 
           {/* TAB 8: AI SOURCING COPILOT (Phase 3A) */}
           {activeTab === 'copilot' && (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem', width: '100%', alignItems: 'start' }} className="animate-fade">
+            <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '1.5rem', width: '100%', height: '100%' }} className="animate-fade">
               
               {/* LEFT SIDE: CHAT INTERFACE */}
-              <div className="widget-panel" style={{ height: 'calc(100vh - 120px)', minHeight: '450px', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div className="widget-panel" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1.25rem', minHeight: '450px' }}>
                 
                 {/* Tab Header */}
                 <div className="widget-header" style={{ paddingBottom: '0.85rem' }}>
