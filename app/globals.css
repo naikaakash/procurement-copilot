@@ -372,7 +372,7 @@ h1, h2, h3, h4, .title-font {
   width: 100vw;
   background-color: var(--bg-main);
   overflow: hidden;
-  zoom: 0.92;
+  zoom: 0.8;
 }
 
 .sidebar {
