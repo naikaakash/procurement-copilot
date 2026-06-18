@@ -1,5 +1,6 @@
-material_id,plant,storage_location,unrestricted_stock,quality_stock,blocked_stock,in_transit_stock,last_count_date,cycle_count_indicator,rfid_detected_qty
-M100001,PL01,SL01,120,0,0,50,2026-05-20,A,120
-M100002,PL01,SL01,450,0,0,100,2026-05-22,B,450
-M100003,PL02,SL02,90,0,0,20,2026-05-24,A,90
-M100004,PL01,SL01,300,0,0,80,2026-05-25,B,300
+material_id,plant,storage_location,unrestricted_stock,quality_stock,blocked_stock,in_transit_stock,last_updated
+M100001,PL01,SL01,120,0,0,0,2026-06-18
+M100002,PL01,SL01,480,20,0,50,2026-06-18
+M100003,PL02,SL02,35,0,0,0,2026-06-18
+M100005,PL03,SL03,800,0,0,0,2026-06-18
+M100008,PL04,SL04,8,0,2,0,2026-06-18

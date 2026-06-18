@@ -1,1 +1,4 @@
-info_record_id,material_id,supplier_id,plant,purchasing_org,price,currency,price_unit,lead_time_days,min_order_qty,valid_from,valid_to
+info_record,supplier_id,material_id,plant,std_price,currency,valid_from,valid_to
+5300000001,VEND-001,M100001,PL01,15,USD,2025-01-01,2027-12-31
+5300000002,VEND-001,M100002,PL01,8.5,USD,2025-01-01,2027-12-31
+5300000003,VEND-003,M100006,PL01,45,USD,2025-01-01,2027-12-31

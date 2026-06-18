@@ -1,5 +1,4 @@
-purchasing_group,purchasing_group_name,buyer_email
-PG1,Alex Buyer Group,alex.buyer@example.com
-PG2,Sarah Planner Group,sarah.planner@example.com
-PG3,John Senior Group,john.senior@example.com
-PG4,Michael Lead Group,michael.lead@example.com
+purchasing_group,description,responsible_buyer
+PG1,Electronics Buyers,Alex Buyer
+PG2,Mechanical Parts,Jordan Buyer
+PG3,Raw Materials,Sam Buyer

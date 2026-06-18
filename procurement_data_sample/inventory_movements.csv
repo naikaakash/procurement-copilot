@@ -1,1 +1,4 @@
-movement_id,material_id,plant,storage_location,movement_type,posting_date,quantity,reference_doc
+movement_id,material_id,plant,storage_location,movement_type,quantity,posting_date,reference_doc
+IM00000001,M100001,PL01,SL01,101,150,2026-06-16,5000003000
+IM00000002,M100001,PL01,SL01,101,200,2026-06-24,5000003001
+IM00000003,M100006,PL01,SL01,101,120,2026-06-09,5000003002

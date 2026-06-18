@@ -1,7 +1,8 @@
 contact_id,supplier_id,contact_name,email,role,primary_flag
 CON01,VEND-001,Alice Sterling,alice@sterlingelectronics.com,Sales Manager,Y
-CON02,VEND-002,Bob Foundry,bob@globalfoundry.com,Account Director,Y
-CON03,VEND-003,Clara Consulting,clara@consultinggroup.com,Sales Manager,Y
-CON04,VEND-004,David Apex,david@apexcomponents.com,Sales Manager,Y
-CON05,VEND-005,Nova Representative,,Inside Sales,Y
-CON06,VEND-006,Vector Agent,vector_logistics_email_at_invalid,Logistics Lead,Y
+CON02,VEND-001,Bob Sterling,bob@sterlingelectronics.com,Account Rep,N
+CON03,VEND-002,Chen Wei,cwei@globalfoundry.com,Sales Manager,Y
+CON04,VEND-003,Klaus Müller,kmuller@apexprecision.de,Export Manager,Y
+CON05,VEND-004,Diane Rawlings,draw@horizonraw.com,Sales Rep,Y
+CON06,VEND-005,Carlos Reyes,creyes@silverpath.mx,Account Manager,Y
+CON07,VEND-006,Erik Nordstrom,enordstrom@northstar.com,Sales Director,Y

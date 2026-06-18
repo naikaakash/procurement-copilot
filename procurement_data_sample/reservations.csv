@@ -1,1 +1,2 @@
-reservation_id,production_order,component_material_id,plant,required_qty,withdrawn_qty,requirement_date,final_issue_flag
+reservation_id,material_id,plant,storage_location,requirement_date,required_qty,withdrawn_qty,open_qty,order_reference
+RES00000001,M100001,PL01,SL01,2026-06-23,500,0,500,PRD1000001

@@ -1,4 +1,2 @@
-company_code,company_name,currency
-US01,Acme Electronics US,USD
-EU01,Acme Electronics EU,EUR
-CA01,Acme Electronics CA,CAD
+company_code,company_name,currency,country
+US01,US Manufacturing Corp,USD,US

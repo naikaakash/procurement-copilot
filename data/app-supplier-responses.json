@@ -1,12 +1,1 @@
-[
-  {
-    "responseId": "resp-4500002010-00010",
-    "purchaseOrderNumber": "4500002010",
-    "purchaseOrderItem": "00010",
-    "supplierId": "VEND-002",
-    "supplierName": "Global Foundry",
-    "responseCategory": "COMMIT_DATE_UPDATE",
-    "rawResponseText": "Confirmed delivery date updated to 2026-06-15.",
-    "respondedAt": "2026-06-11T14:00:00.000Z"
-  }
-]
+[]

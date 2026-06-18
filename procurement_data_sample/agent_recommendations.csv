@@ -1,1 +1,23 @@
-recommendation_id,exception_id,agent_name,confidence_score,recommended_action,draft_subject,draft_message,approval_status,created_on
+recommendation_id,scenario_id,po_number,item_number,supplier_id,recommendation_type,recommendation_text,priority,generated_on,status
+REC000001,SCN-001,4500002001,00010,VEND-001,EXPEDITE,Expedite PO 4500002001: Supplier has not acknowledged. Contact supplier immediately.,HIGH,2026-06-18,OPEN
+REC000002,SCN-003,4500002003,00010,VEND-002,INVESTIGATE,Investigate PO 4500002003: Supplier confirmed only 200/300.,MEDIUM,2026-06-18,OPEN
+REC000003,SCN-004,4500002004,00010,VEND-003,EXPEDITE,Expedite PO 4500002004: Supplier acknowledged but committed to a later date than PO line. Contact supplier immediately.,HIGH,2026-06-18,OPEN
+REC000004,SCN-005,4500002005,00010,VEND-004,MONITOR,Monitor PO 4500002005 — no immediate action required.,LOW,2026-06-18,OPEN
+REC000005,SCN-006,4500002006,00010,VEND-005,ESCALATE,CRITICAL: Escalate PO 4500002006 to supply chain manager. PO is overdue with no ACK.,CRITICAL,2026-06-18,OPEN
+REC000006,SCN-010,4500002010,00010,VEND-003,INVESTIGATE,Investigate PO 4500002010: GR qty 120 > ordered qty 100.,MEDIUM,2026-06-18,OPEN
+REC000007,SCN-012,4500002012,00010,VEND-005,EXPEDITE,Expedite PO 4500002012: Delivery was 3 days late. Contact supplier immediately.,HIGH,2026-06-18,OPEN
+REC000008,SCN-013,4500002013,00010,VEND-005,EXPEDITE,Expedite PO 4500002013: Supplier risk_score=72. Contact supplier immediately.,HIGH,2026-06-18,OPEN
+REC000009,SCN-014,4500002014,00010,VEND-007,ESCALATE,CRITICAL: Escalate PO 4500002014 to supply chain manager. VEND-007 blocked_flag=Y.,CRITICAL,2026-06-18,OPEN
+REC000010,SCN-015,4500002015,00010,VEND-002,MONITOR,Monitor PO 4500002015 — no immediate action required.,LOW,2026-06-18,OPEN
+REC000011,SCN-016,4500002016,00010,VEND-001,EXPEDITE,"Expedite PO 4500002016: GR posted, but material in quality stock. Contact supplier immediately.",HIGH,2026-06-18,OPEN
+REC000012,SCN-017,4500002017,00010,VEND-003,INVESTIGATE,Investigate PO 4500002017: 30-day planned lead time + no ACK received.,MEDIUM,2026-06-18,OPEN
+REC000013,SCN-020,4500002020,00010,VEND-004,MONITOR,Monitor PO 4500002020 — no immediate action required.,LOW,2026-06-18,OPEN
+REC000014,SCN-021,4500002021,00010,VEND-002,MONITOR,Monitor PO 4500002021 — no immediate action required.,LOW,2026-06-18,OPEN
+REC000015,SCN-022,4500002022,00010,VEND-006,MONITOR,Monitor PO 4500002022 — no immediate action required.,LOW,2026-06-18,OPEN
+REC000016,SCN-023,4500002023,00010,VEND-005,EXPEDITE,Expedite PO 4500002023: VEND-005 OTD=74%. Contact supplier immediately.,HIGH,2026-06-18,OPEN
+REC000017,SCN-024,4500002024,00010,VEND-002,INVESTIGATE,Investigate PO 4500002024: VEND-002 quality_ppm=1934.,MEDIUM,2026-06-18,OPEN
+REC000018,SCN-026,4500002026,00010,VEND-005,EXPEDITE,Expedite PO 4500002026: 3 follow-up messages sent with no response. Contact supplier immediately.,HIGH,2026-06-18,OPEN
+REC000019,SCN-029,4500002029,00010,VEND-003,MONITOR,Monitor PO 4500002029 — no immediate action required.,LOW,2026-06-18,OPEN
+REC000020,SCN-030,4500002030,00010,VEND-004,MONITOR,Monitor PO 4500002030 — no immediate action required.,LOW,2026-06-18,OPEN
+REC000021,SCN-031,4500002031,00010,VEND-002,INVESTIGATE,Investigate PO 4500002031: Supplier confirmed 130 against PO of 100.,MEDIUM,2026-06-18,OPEN
+REC000022,SCN-032,4500002032,00010,VEND-001,EXPEDITE,Expedite PO 4500002032: Unrestricted stock (120) < safety stock (200). Contact supplier immediately.,HIGH,2026-06-18,OPEN

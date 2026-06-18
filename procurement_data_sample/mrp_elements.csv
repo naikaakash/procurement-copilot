@@ -1,3 +1,3 @@
-mrp_element_id,material_id,plant,mrp_element_type,mrp_element_ref,requirement_date,receipt_qty,requirement_qty,available_qty_after
-MRP01,M100001,PL01,STOCK,,2026-05-28,120,0,120
-MRP02,M100001,PL01,POITEM,4500002001,2026-06-25,100,0,220
+mrp_element_id,material_id,plant,element_type,element_number,quantity,available_date,mrp_controller,created_on
+MRP00000001,M100006,PL01,PO,4500002017,30,2026-08-02,MC1,2026-06-18
+MRP00000002,M100001,PL01,PO,4500002032,300,2026-07-03,MC1,2026-06-18

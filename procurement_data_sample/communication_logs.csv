@@ -1,1 +1,4 @@
-message_id,po_number,item_number,supplier_id,direction,subject,body,sent_date,received_date,sentiment,extracted_commit_date,extracted_qty,source_system
+comm_id,po_number,item_number,supplier_id,direction,channel,subject,sent_date,sent_by,response_received
+COMM000001,4500002026,00010,VEND-005,OUTBOUND,EMAIL,Follow-up #1: PO 4500002026 acknowledgement required,2026-05-30,Alex Buyer,N
+COMM000002,4500002026,00010,VEND-005,OUTBOUND,EMAIL,Follow-up #2: PO 4500002026 acknowledgement required,2026-06-01,Alex Buyer,N
+COMM000003,4500002026,00010,VEND-005,OUTBOUND,EMAIL,Follow-up #3: PO 4500002026 acknowledgement required,2026-06-03,Alex Buyer,N

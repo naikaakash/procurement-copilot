@@ -1,1 +1,2 @@
-asn_number,po_number,item_number,schedule_line,supplier_id,shipped_qty,ship_date,expected_delivery_date,carrier,tracking_number,status,last_status_update
+asn_number,po_number,item_number,supplier_id,ship_date,expected_arrival,shipped_qty,carrier,tracking_number,asn_status
+ASN00000001,4500002033,00010,VEND-006,2026-06-16,2026-06-25,8,DHL,TRACK4500002033,IN_TRANSIT

@@ -1,11 +1,9 @@
 material_id,material_description,material_group,base_uom,division,product_hierarchy,abc_indicator,critical_part_flag,serial_managed_flag,batch_managed_flag,standard_price,currency
-M100001,Microprocessor Core v1,SEMICONDUCTOR,PC,01,0101,A,Y,N,N,15.00,USD
-M100002,Resistor Pack 10k,COMPONENTS,PC,01,0102,B,N,N,N,0.15,USD
-M100003,ASIC Transceiver Chip,SEMICONDUCTOR,PC,01,0101,A,Y,N,N,25.00,USD
-M100004,PCB Board Double Sided,COMPONENTS,PC,01,0102,B,N,N,N,2.50,USD
-S200001,ERP Implementation Consulting Services,SERVICES,HR,02,0201,C,N,N,N,75000.00,EUR
-S200002,System Upgrade Integration Test Services,SERVICES,HR,02,0201,C,N,N,N,45000.00,EUR
-S200003,Cloud Migration System Analysis,SERVICES,HR,02,0201,C,N,N,N,60000.00,EUR
-S200004,ERP implementation Support Services,SERVICES,HR,02,0201,C,N,N,N,1500.00,EUR
-S200005,ERP implementation Training Services,SERVICES,HR,02,0201,C,N,N,N,800.00,EUR
-S200006,ERP implementation Post-Go-Live Services,SERVICES,HR,02,0201,C,N,N,N,1000.00,EUR
+M100001,Microprocessor Core v1,SEMICONDUCTOR,PC,01,0101,A,Y,N,N,15,USD
+M100002,Power Regulator IC,SEMICONDUCTOR,PC,01,0101,A,Y,N,N,8.5,USD
+M100003,Aluminum Housing Shell,MECH_PARTS,PC,02,0201,B,N,N,N,22,USD
+M100004,Stainless Steel Bracket,MECH_PARTS,PC,02,0201,B,N,N,N,5.75,USD
+M100005,Copper Wire Spool 10m,RAW_MATERIALS,EA,03,0301,C,N,N,N,3.2,USD
+M100006,"LCD Display Module 7""",DISPLAY,PC,01,0102,A,Y,N,N,45,USD
+M100007,Thermal Paste Compound,CONSUMABLES,KG,04,0401,C,N,N,N,12,USD
+M100008,FPGA Dev Module XC7A,SEMICONDUCTOR,PC,01,0101,A,Y,Y,N,120,USD

@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "seed:sql": "node scripts/seed-sql.js",
+    "generate:csv": "node scripts/generate-scenario-csv-data.js",
+    "validate:csv": "node scripts/generate-scenario-csv-data.js --validate-only",
     "test:e2e": "node scratch/generate-mock-json.js && node scripts/seed-mock-data.js && node scratch/calculate-metrics.js && node scratch/regression-qa.js && playwright test",
     "qa:full": "node scratch/generate-mock-json.js && node scripts/seed-mock-data.js && node scratch/calculate-metrics.js && node scratch/regression-qa.js && npm run build && playwright test"
   },

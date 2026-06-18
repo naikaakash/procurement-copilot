@@ -153,6 +153,8 @@ export async function readCsv(filename: string): Promise<any[]> {
 // Clear cache
 export function clearCache() {
   cache = {};
+  recommendationsCache = null;
+  escalationsCache = null;
 }
 
 /**

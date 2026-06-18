@@ -1,5 +1,5 @@
 plant,plant_name,city,region,country,timezone
 PL01,Austin Tech Plant,Austin,TX,US,CST
-PL02,Berlin Tech Plant,Berlin,,DE,CET
-PL03,Munich Plant,Munich,,DE,CET
-PL04,Hamburg Plant,Hamburg,,DE,CET
+PL02,Chicago Mfg Center,Chicago,IL,US,CST
+PL03,Houston Assembly Hub,Houston,TX,US,CST
+PL04,Newark Distribution,Newark,NJ,US,EST

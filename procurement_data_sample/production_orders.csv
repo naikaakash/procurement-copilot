@@ -1,1 +1,2 @@
-production_order,plant,material_id,order_qty,basic_start_date,basic_finish_date,status,mrp_controller
+production_order,material_id,plant,order_qty,start_date,finish_date,status,shortage_flag
+PRD1000001,M100001,PL01,500,2026-06-23,2026-06-30,RELEASED,Y
